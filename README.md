@@ -1,35 +1,35 @@
 ACT.MPTimer
 ===========
 
-ŠT—v
+æ¦‚è¦
 -------------
-ƒQ[ƒ€“à‚Ì3•b‚²‚Æ‚ÌMP‰ñ•œ‚ðƒvƒƒOƒŒƒXƒo[‚Å•\Ž¦‚µ‚Ü‚·
+ã‚²ãƒ¼ãƒ å†…ã®3ç§’ã”ã¨ã®MPå›žå¾©ã‚’ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã§è¡¨ç¤ºã—ã¾ã™
   
   
-Žg‚¢•û
+ä½¿ã„æ–¹
 --------------
 ACT.MPTimer.dll  
 ACT.MPTimer.dll.config  
-‚ðACT‚ÌƒCƒ“ƒXƒg[ƒ‹ƒfƒBƒŒƒNƒgƒŠ‚ÉƒRƒs[‚µ‚Ü‚·  
-‚»‚ÌŒãAƒvƒ‰ƒOƒCƒ“‚Æ‚µ‚ÄACT.MPTimer.dll‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢  
+ã‚’ACTã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã‚³ãƒ”ãƒ¼ã—ã¾ã™  
+ãã®å¾Œã€ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã¨ã—ã¦ACT.MPTimer.dllã‚’è¿½åŠ ã—ã¦ãã ã•ã„  
   
-ƒQ[ƒ€“à‚ÅŽ©•ª‚ÌMP‚ªŒ¸‚Á‚ÄŽ©‘R‰ñ•œ‚·‚é‚Æ‰ñ•œƒ^ƒCƒ~ƒ“ƒO‚ª“¯Šú‚³‚ê‚Ü‚·  
+ã‚²ãƒ¼ãƒ å†…ã§è‡ªåˆ†ã®MPãŒæ¸›ã£ã¦è‡ªç„¶å›žå¾©ã™ã‚‹ã¨å›žå¾©ã‚¿ã‚¤ãƒŸãƒ³ã‚°ãŒåŒæœŸã•ã‚Œã¾ã™  
   
   
-ÅVƒŠƒŠ[ƒX
+æœ€æ–°ãƒªãƒªãƒ¼ã‚¹
 --------------
-**[‚±‚¿‚ç‚©‚çƒ_ƒEƒ“ƒ[ƒh‚µ‚Ä‚­‚¾‚³‚¢](https://github.com/anoyetta/ACT.MPTimer/releases/latest)**  
+**[ã“ã¡ã‚‰ã‹ã‚‰ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¦ãã ã•ã„](https://github.com/anoyetta/ACT.MPTimer/releases/latest)**  
   
   
-ƒ‰ƒCƒZƒ“ƒX
+ãƒ©ã‚¤ã‚»ãƒ³ã‚¹
 --------------
-ŽOð€BSDƒ‰ƒCƒZƒ“ƒX  
+ä¸‰æ¡é …BSDãƒ©ã‚¤ã‚»ãƒ³ã‚¹  
 Copryright (c) 2014, anoyetta  
 https://github.com/anoyetta/ACT.MPTimer/blob/master/LICENSE  
   
   
-ŽÓŽ«
+è¬è¾ž
 --------------
-EGB19xx—l  
+ãƒ»GB19xxæ§˜  
 https://github.com/GB19xx/ACT.TPMonitor  
-‚ÌFF14ƒwƒ‹ƒp[ƒNƒ‰ƒX‚ð—¬—p‚³‚¹‚Ä‚¢‚½‚¾‚«‚Ü‚µ‚½  
+ã®FF14ãƒ˜ãƒ«ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹ã‚’æµç”¨ã•ã›ã¦ã„ãŸã ãã¾ã—ãŸ  
