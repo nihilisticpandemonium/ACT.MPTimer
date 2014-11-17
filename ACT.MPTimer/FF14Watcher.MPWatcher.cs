@@ -67,7 +67,7 @@
             this.TimeOfRecovery = remain;
 
             // 回復までの残り時間の割合を算出する
-            this.RateOfRecovery = (decimal)this.TimeOfRecovery / 3000m;
+            this.RateOfRecovery = (decimal)(3000 - this.TimeOfRecovery) / 3000m;
 
             // 現在のMPを保存する
             this.PreviousMP = player.CurrentMP;
