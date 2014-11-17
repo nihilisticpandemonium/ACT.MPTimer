@@ -131,6 +131,9 @@
             {
                 return;
             }
+
+            // MP回復スパンを開始する
+            this.WacthMPRecovery();
         }
     }
 }
