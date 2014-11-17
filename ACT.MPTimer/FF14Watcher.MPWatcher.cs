@@ -50,7 +50,7 @@
             if (player.CurrentMP > this.PreviousMP)
             {
                 this.LastRecoveryDateTime = now;
-                this.NextRecoveryDateTime = this.LastRecoveryDateTime.AddSeconds(3);
+                this.NextRecoveryDateTime = this.LastRecoveryDateTime.AddSeconds(3d);
             }
 
             // 回復までの残り時間を算出する
