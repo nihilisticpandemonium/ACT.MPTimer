@@ -18,7 +18,7 @@
       <Value Profile="(Default)">メイリオ</Value>
     </Setting>
     <Setting Name="OverlayFontSize" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">9</Value>
+      <Value Profile="(Default)">11</Value>
     </Setting>
     <Setting Name="OverlayFontColor" Type="System.String" Scope="User">
       <Value Profile="(Default)">WhiteSmoke</Value>

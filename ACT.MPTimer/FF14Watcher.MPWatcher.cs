@@ -28,6 +28,11 @@
         public DateTime NextRecoveryDateTime { get; private set; }
 
         /// <summary>
+        /// プレイヤーがいるか？
+        /// </summary>
+        public bool ExistPlayer { get; private set; }
+
+        /// <summary>
         /// 直前のTP
         /// </summary>
         private int PreviousMP { get; set; }
@@ -41,30 +46,30 @@
 
             if (player == null)
             {
+                this.ExistPlayer = false;
                 return;
             }
+
+            this.ExistPlayer = true;
 
             var now = DateTime.Now;
 
             // MPが回復している？
-            if (now >= this.NextRecoveryDateTime)
+            if (player.CurrentMP > this.PreviousMP)
             {
-                if (player.CurrentMP > this.PreviousMP)
-                {
-                    this.LastRecoveryDateTime = now;
-                    this.NextRecoveryDateTime = this.LastRecoveryDateTime.AddSeconds(3d);
-                }
+                this.LastRecoveryDateTime = now;
+                this.NextRecoveryDateTime = this.LastRecoveryDateTime.AddSeconds(3d);
             }
 
             // 回復までの残り時間を算出する
-            var remain = (this.NextRecoveryDateTime - now).Milliseconds;
+            var remain = (this.NextRecoveryDateTime - now).TotalMilliseconds;
 
-            if (remain < 0)
+            if (remain < 0d)
             {
-                remain = 0;
+                remain = 0d;
             }
 
-            this.TimeOfRecovery = remain;
+            this.TimeOfRecovery = Convert.ToInt32(remain);
 
             // 回復までの残り時間の割合を算出する
             this.RateOfRecovery = (decimal)(3000 - this.TimeOfRecovery) / 3000m;

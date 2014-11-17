@@ -169,16 +169,25 @@
             // 設定をロードする
             this.LoadSettings();
 
+            // プレイヤーがいない？
+            if (!FF14Watcher.Default.ExistPlayer)
+            {
+                return;
+            }
+
             // MP回復までの残り秒数を取得する
-            this.RemainTimeLabel.Text =
-                ((decimal)FF14Watcher.Default.TimeOfRecovery / 1000m).ToString("0.00");
+            if (FF14Watcher.Default.TimeOfRecovery <= 0)
+            {
+                this.RemainTimeLabel.Text = string.Empty;
+            }
+            else
+            {
+                this.RemainTimeLabel.Text =
+                    ((decimal)FF14Watcher.Default.TimeOfRecovery / 1000m).ToString("0.00");
+            }
 
             // MP回復の進捗率を取得する
             var rateOfMPRecovery = FF14Watcher.Default.RateOfRecovery;
-
-#if DEBUG
-            rateOfMPRecovery = 0.4m;
-#endif
 
             var pic = this.ProgressPictureBox;
 
