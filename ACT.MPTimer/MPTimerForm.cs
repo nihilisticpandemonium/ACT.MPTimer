@@ -134,13 +134,13 @@
                     }
 
 #if !DEBUG
-                // FF14Processがなければ何もしない
-                var ff14 = FF14PluginHelper.GetFFXIVProcess;
-                if (ff14 == null)
-                {
-                    this.Visible = false;
-                    return;
-                }
+                    // FF14Processがなければ何もしない
+                    var ff14 = FF14PluginHelper.GetFFXIVProcess;
+                    if (ff14 == null)
+                    {
+                        this.Visible = false;
+                        return;
+                    }
 #endif
 
                     // MP回復タイミングを描画する
