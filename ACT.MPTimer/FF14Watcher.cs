@@ -50,7 +50,7 @@
 
                     instance.watchTimer = new Timer()
                     {
-                        Interval = 500,
+                        Interval = 100,
                         AutoReset = false,
                         Enabled = false
                     };

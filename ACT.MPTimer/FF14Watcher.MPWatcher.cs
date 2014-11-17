@@ -47,19 +47,27 @@
             var now = DateTime.Now;
 
             // MPが回復している？
-            if (player.CurrentMP > this.PreviousMP)
+            if (now >= this.NextRecoveryDateTime)
             {
-                this.LastRecoveryDateTime = now;
-                this.NextRecoveryDateTime = this.LastRecoveryDateTime.AddSeconds(3d);
+                if (player.CurrentMP > this.PreviousMP)
+                {
+                    this.LastRecoveryDateTime = now;
+                    this.NextRecoveryDateTime = this.LastRecoveryDateTime.AddSeconds(3d);
+                }
             }
 
             // 回復までの残り時間を算出する
-            this.TimeOfRecovery = (this.NextRecoveryDateTime - now).Milliseconds;
+            var remain = (this.NextRecoveryDateTime - now).Milliseconds;
+
+            if (remain < 0)
+            {
+                remain = 0;
+            }
+
+            this.TimeOfRecovery = remain;
 
             // 回復までの残り時間の割合を算出する
-            this.RateOfRecovery = this.TimeOfRecovery >= 0 ?
-                (decimal)this.TimeOfRecovery / 3000m :
-                0m;
+            this.RateOfRecovery = (decimal)this.TimeOfRecovery / 3000m;
 
             // 現在のMPを保存する
             this.PreviousMP = player.CurrentMP;
