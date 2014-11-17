@@ -60,6 +60,15 @@
                 this.LastRecoveryDateTime = now;
                 this.NextRecoveryDateTime = this.LastRecoveryDateTime.AddSeconds(3d);
             }
+            else
+            {
+                // 一旦満タンである？
+                if (this.TimeOfRecovery <= 0)
+                {
+                    this.LastRecoveryDateTime = now;
+                    this.NextRecoveryDateTime = this.LastRecoveryDateTime.AddSeconds(3d);
+                }
+            }
 
             // 回復までの残り時間を算出する
             var remain = (this.NextRecoveryDateTime - now).TotalMilliseconds;

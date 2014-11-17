@@ -172,6 +172,7 @@
             // プレイヤーがいない？
             if (!FF14Watcher.Default.ExistPlayer)
             {
+                this.Visible = false;
                 return;
             }
 
