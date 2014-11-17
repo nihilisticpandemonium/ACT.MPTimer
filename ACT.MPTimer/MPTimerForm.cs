@@ -202,9 +202,9 @@
             {
                 using (var foreBrush = new SolidBrush(progressBarColor))
                 using (var backBrush = new SolidBrush(Color.FromArgb(
-                    (int)(progressBarColor.R * 0.4),
-                    (int)(progressBarColor.G * 0.4),
-                    (int)(progressBarColor.B * 0.4))))
+                    (int)(progressBarColor.R * 0.5),
+                    (int)(progressBarColor.G * 0.5),
+                    (int)(progressBarColor.B * 0.5))))
                 {
                     // 進捗率を描画する
                     g.FillRectangle(
