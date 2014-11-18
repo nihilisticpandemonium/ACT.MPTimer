@@ -36,6 +36,11 @@
                 // アップデートを確認する
                 this.Update();
 
+                // 設定Panelを追加する
+                var panel = new ConfigPanel();
+                panel.Dock = DockStyle.Fill;
+                pluginScreenSpace.Controls.Add(panel);
+
                 // FF14監視スレッドを開始する
                 FF14Watcher.Initialize();
 

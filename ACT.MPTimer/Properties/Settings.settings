@@ -11,23 +11,23 @@
     <Setting Name="OverlayWidth" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">150</Value>
     </Setting>
-    <Setting Name="OverlayColor" Type="System.String" Scope="User">
+    <Setting Name="OverlayColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">OrangeRed</Value>
     </Setting>
-    <Setting Name="OverlayFontName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">メイリオ</Value>
-    </Setting>
-    <Setting Name="OverlayFontSize" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">9</Value>
-    </Setting>
-    <Setting Name="OverlayFontColor" Type="System.String" Scope="User">
-      <Value Profile="(Default)">WhiteSmoke</Value>
+    <Setting Name="OverlayFont" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">メイリオ, 8.25pt</Value>
     </Setting>
     <Setting Name="OverlayLeft" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="OverlayTop" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="OverlayFontColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">WhiteSmoke</Value>
+    </Setting>
+    <Setting Name="OverlayOpacity" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">35</Value>
     </Setting>
   </Settings>
 </SettingsFile>

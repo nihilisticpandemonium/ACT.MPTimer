@@ -194,7 +194,7 @@
             var backWidth = pic.Width - foreWidth;
 
             // バーの色を決める
-            var progressBarColor = ColorTranslator.FromHtml(Settings.Default.OverlayColor);
+            var progressBarColor = Settings.Default.OverlayColor;
 
             // バーを描画する
             var bmp = new Bitmap(pic.Width, pic.Height);
@@ -239,6 +239,8 @@
         /// </summary>
         private void LoadSettings()
         {
+            this.Opacity = (100 - Settings.Default.OverlayOpacity) / 100d;
+
             this.Location = new Point(
                 Settings.Default.OverlayLeft,
                 Settings.Default.OverlayTop);
@@ -247,12 +249,8 @@
                 Settings.Default.OverlayWidth,
                 Settings.Default.OverlayHeight);
 
-            this.RemainTimeLabel.ForeColor = ColorTranslator.FromHtml(
-                Settings.Default.OverlayFontColor);
-
-            this.RemainTimeLabel.Font = new Font(
-                Settings.Default.OverlayFontName,
-                Settings.Default.OverlayFontSize);
+            this.RemainTimeLabel.Font = Settings.Default.OverlayFont;
+            this.RemainTimeLabel.ForeColor = Settings.Default.OverlayFontColor;
         }
     }
 }

@@ -62,9 +62,9 @@ namespace ACT.MPTimer.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("OrangeRed")]
-        public string OverlayColor {
+        public global::System.Drawing.Color OverlayColor {
             get {
-                return ((string)(this["OverlayColor"]));
+                return ((global::System.Drawing.Color)(this["OverlayColor"]));
             }
             set {
                 this["OverlayColor"] = value;
@@ -73,37 +73,13 @@ namespace ACT.MPTimer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("メイリオ")]
-        public string OverlayFontName {
+        [global::System.Configuration.DefaultSettingValueAttribute("メイリオ, 8.25pt")]
+        public global::System.Drawing.Font OverlayFont {
             get {
-                return ((string)(this["OverlayFontName"]));
+                return ((global::System.Drawing.Font)(this["OverlayFont"]));
             }
             set {
-                this["OverlayFontName"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9")]
-        public int OverlayFontSize {
-            get {
-                return ((int)(this["OverlayFontSize"]));
-            }
-            set {
-                this["OverlayFontSize"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("WhiteSmoke")]
-        public string OverlayFontColor {
-            get {
-                return ((string)(this["OverlayFontColor"]));
-            }
-            set {
-                this["OverlayFontColor"] = value;
+                this["OverlayFont"] = value;
             }
         }
         
@@ -128,6 +104,30 @@ namespace ACT.MPTimer.Properties {
             }
             set {
                 this["OverlayTop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("WhiteSmoke")]
+        public global::System.Drawing.Color OverlayFontColor {
+            get {
+                return ((global::System.Drawing.Color)(this["OverlayFontColor"]));
+            }
+            set {
+                this["OverlayFontColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("35")]
+        public int OverlayOpacity {
+            get {
+                return ((int)(this["OverlayOpacity"]));
+            }
+            set {
+                this["OverlayOpacity"] = value;
             }
         }
     }

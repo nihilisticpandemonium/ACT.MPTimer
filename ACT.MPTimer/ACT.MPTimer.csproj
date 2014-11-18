@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfigPanel.Designer.cs">
+      <DependentUpon>ConfigPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="FF14PluginHelper.cs" />
     <Compile Include="FF14Watcher.cs" />
     <Compile Include="FF14Watcher.FF14PluginWrapper.cs" />
@@ -76,6 +82,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ConfigPanel.resx">
+      <DependentUpon>ConfigPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MPTimerForm.resx">
       <DependentUpon>MPTimerForm.cs</DependentUpon>
     </EmbeddedResource>
