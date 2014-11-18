@@ -31,7 +31,7 @@
             }
             else
             {
-                return new Combatant();
+                return null;
             }
         }
 
