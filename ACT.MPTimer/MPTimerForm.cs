@@ -222,7 +222,7 @@
             pic.Size = this.Size;
 
             this.RemainTimeLabel.Top = (this.Height / 2) - (this.RemainTimeLabel.Height / 2);
-            this.RemainTimeLabel.Left = this.Width - this.RemainTimeLabel.Width - 9;
+            this.RemainTimeLabel.Left = this.Width - this.RemainTimeLabel.Width - 2;
 
             // バーの長さを決める
             var foreWidth = (int)(pic.Width * rateOfMPRecovery);
