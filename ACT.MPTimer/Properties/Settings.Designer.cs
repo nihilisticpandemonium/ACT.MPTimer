@@ -37,25 +37,25 @@ namespace ACT.MPTimer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("26")]
-        public int OverlayHeight {
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int ProgressBarHeight {
             get {
-                return ((int)(this["OverlayHeight"]));
+                return ((int)(this["ProgressBarHeight"]));
             }
             set {
-                this["OverlayHeight"] = value;
+                this["ProgressBarHeight"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("150")]
-        public int OverlayWidth {
+        public int ProgressBarWidth {
             get {
-                return ((int)(this["OverlayWidth"]));
+                return ((int)(this["ProgressBarWidth"]));
             }
             set {
-                this["OverlayWidth"] = value;
+                this["ProgressBarWidth"] = value;
             }
         }
         
@@ -73,7 +73,7 @@ namespace ACT.MPTimer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("メイリオ, 8.25pt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("メイリオ, 9.75pt")]
         public global::System.Drawing.Font OverlayFont {
             get {
                 return ((global::System.Drawing.Font)(this["OverlayFont"]));
@@ -109,7 +109,7 @@ namespace ACT.MPTimer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("WhiteSmoke")]
+        [global::System.Configuration.DefaultSettingValueAttribute("DimGray")]
         public global::System.Drawing.Color OverlayFontColor {
             get {
                 return ((global::System.Drawing.Color)(this["OverlayFontColor"]));

@@ -83,8 +83,8 @@
         /// </summary>
         private void LoadSettings()
         {
-            this.OverlayWidthNumericUpDown.Value = Settings.Default.OverlayWidth;
-            this.OverlayHeightNumericUpDown.Value = Settings.Default.OverlayHeight;
+            this.OverlayWidthNumericUpDown.Value = Settings.Default.ProgressBarWidth;
+            this.OverlayHeightNumericUpDown.Value = Settings.Default.ProgressBarHeight;
 
             this.DummyOverlayLabel.BackColor = Settings.Default.OverlayColor;
             this.DummyOverlayLabel.ForeColor = Settings.Default.OverlayFontColor;
@@ -98,8 +98,8 @@
         /// </summary>
         private void SaveSettings()
         {
-            Settings.Default.OverlayWidth = (int)this.OverlayWidthNumericUpDown.Value;
-            Settings.Default.OverlayHeight = (int)this.OverlayHeightNumericUpDown.Value;
+            Settings.Default.ProgressBarWidth = (int)this.OverlayWidthNumericUpDown.Value;
+            Settings.Default.ProgressBarHeight = (int)this.OverlayHeightNumericUpDown.Value;
 
             Settings.Default.OverlayColor = this.DummyOverlayLabel.BackColor;
             Settings.Default.OverlayFontColor = this.DummyOverlayLabel.ForeColor;
