@@ -2,8 +2,8 @@
 {
     using System;
     using System.Drawing;
+    using System.Drawing.Drawing2D;
     using System.Windows.Forms;
-
     using ACT.MPTimer.Properties;
     using Advanced_Combat_Tracker;
 
@@ -45,6 +45,11 @@
         /// 最後のマウスの位置
         /// </summary>
         private Point lastMousePosition;
+
+        /// <summary>
+        /// 停止中？
+        /// </summary>
+        private bool isStoped;
 
         /// <summary>
         /// コンストラクタ
@@ -111,6 +116,17 @@
         private void MPTimerForm_Load(object sender, EventArgs e)
         {
             this.timer.Enabled = true;
+            this.isStoped = false;
+
+            this.ProgressPictureBox.MouseDoubleClick += (s1, e1) =>
+            {
+                this.isStoped = !this.isStoped;
+            };
+
+            this.RemainTimeLabel.MouseDoubleClick += (s1, e1) =>
+            {
+                this.isStoped = !this.isStoped;
+            };
         }
 
         /// <summary>
@@ -169,12 +185,14 @@
             // 設定をロードする
             this.LoadSettings();
 
+#if !DEBUG
             // プレイヤーがいない？
             if (!FF14Watcher.Default.ExistPlayer)
             {
                 this.Visible = false;
                 return;
             }
+#endif
 
             // MP回復までの残り秒数を取得する
             if (FF14Watcher.Default.TimeOfRecovery <= 0)
@@ -189,6 +207,13 @@
 
             // MP回復の進捗率を取得する
             var rateOfMPRecovery = FF14Watcher.Default.RateOfRecovery;
+
+            // 停止中？
+            if (this.isStoped)
+            {
+                this.RemainTimeLabel.Text = "STOP";
+                rateOfMPRecovery = 0;
+            }
 
             var pic = this.ProgressPictureBox;
 
@@ -205,21 +230,22 @@
 
             // バーの色を決める
             var progressBarColor = Settings.Default.OverlayColor;
+            var backColor = Color.FromArgb(
+                (int)(progressBarColor.R * 0.4),
+                (int)(progressBarColor.G * 0.4),
+                (int)(progressBarColor.B * 0.4));
 
             // バーを描画する
             var bmp = new Bitmap(pic.Width, pic.Height);
             using (var g = Graphics.FromImage(bmp))
             {
                 using (var foreBrush = new SolidBrush(progressBarColor))
-                using (var backBrush = new SolidBrush(Color.FromArgb(
-                    (int)(progressBarColor.R * 0.5),
-                    (int)(progressBarColor.G * 0.5),
-                    (int)(progressBarColor.B * 0.5))))
+                using (var backBrush = new SolidBrush(backColor))
                 {
                     // 進捗率を描画する
                     g.FillRectangle(
                         foreBrush,
-                        backWidth,
+                        0,
                         0,
                         foreWidth,
                         pic.Height);
@@ -227,7 +253,7 @@
                     // 残りを描画する
                     g.FillRectangle(
                         backBrush,
-                        0,
+                        foreWidth,
                         0,
                         backWidth,
                         pic.Height);

@@ -40,6 +40,7 @@
         /// <param name="e">イベント引数</param>
         private void BackColorButton_Click(object sender, EventArgs e)
         {
+            this.ColorDialog.Color = this.DummyOverlayLabel.BackColor;
             if (this.ColorDialog.ShowDialog(this) != DialogResult.Cancel)
             {
                 this.DummyOverlayLabel.BackColor = this.ColorDialog.Color;
@@ -54,6 +55,7 @@
         /// <param name="e">イベント引数</param>
         private void FontButton_Click(object sender, EventArgs e)
         {
+            this.FontDialog.Font = this.DummyOverlayLabel.Font;
             if (this.FontDialog.ShowDialog(this) != DialogResult.Cancel)
             {
                 this.DummyOverlayLabel.Font = this.FontDialog.Font;
@@ -68,6 +70,7 @@
         /// <param name="e">イベント引数</param>
         private void FontColorButton_Click(object sender, EventArgs e)
         {
+            this.ColorDialog.Color = this.DummyOverlayLabel.ForeColor;
             if (this.ColorDialog.ShowDialog(this) != DialogResult.Cancel)
             {
                 this.DummyOverlayLabel.ForeColor = this.ColorDialog.Color;
