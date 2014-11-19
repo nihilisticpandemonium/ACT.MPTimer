@@ -74,6 +74,7 @@
         void IActPluginV1.DeInitPlugin()
         {
             FF14Watcher.Deinitialize();
+            this.MPTimerWindow.Close();
 
             this.PluginStatusLabel.Text = "Plugin Exited";
         }
