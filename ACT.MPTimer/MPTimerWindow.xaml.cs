@@ -26,11 +26,6 @@
         private DispatcherTimer MPWatchTimer;
 
         /// <summary>
-        /// ドラッグ中か？
-        /// </summary>
-        private bool IsDragging;
-
-        /// <summary>
         /// 停止中か？
         /// </summary>
         private bool IsStopping;
@@ -68,16 +63,7 @@
             {
                 lock (lockObject)
                 {
-                    this.IsDragging = true;
                     this.DragMove();
-                }
-            };
-
-            this.MouseLeftButtonUp += (s1, e1) =>
-            {
-                lock (lockObject)
-                {
-                    this.IsDragging = false;
                 }
             };
 
@@ -87,7 +73,6 @@
                 lock (lockObject)
                 {
                     this.IsStopping = !this.IsStopping;
-                    this.IsDragging = false;
                     this.MPWatchCore();
                 }
             };
@@ -124,24 +109,10 @@
             {
                 this.MPWatchTimer.Stop();
 
-                if (this.IsDragging)
-                {
-                    return;
-                }
-
-                // Windowの位置を保存する
-                if (Settings.Default.OverlayLeft != (int)this.Left ||
-                    Settings.Default.OverlayTop != (int)this.Top)
-                {
-                    Settings.Default.OverlayTop = (int)this.Top;
-                    Settings.Default.OverlayLeft = (int)this.Left;
-                    Settings.Default.Save();
-                }
-
                 // ACTが表示されていなければ何もしない
                 if (!ActGlobals.oFormActMain.Visible)
                 {
-                    this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 5, 0);
+                    this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 1, 0);
                     this.Visibility = Visibility.Hidden;
                     return;
                 }
@@ -151,7 +122,7 @@
                 var ff14 = FF14PluginHelper.GetFFXIVProcess;
                 if (ff14 == null)
                 {
-                    this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 5, 0);
+                    this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 1, 0);
                     this.Visibility = Visibility.Hidden;
                     return;
                 }
@@ -159,7 +130,7 @@
                 // プレイヤーがいない？
                 if (!FF14Watcher.Default.ExistPlayer)
                 {
-                    this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 5, 0);
+                    this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 1, 0);
                     this.Visibility = Visibility.Hidden;
                     return;
                 }
@@ -235,14 +206,6 @@
                 Settings.Default.OverlayFontColor.B));
             this.RecastTimeTextBlock.Text = recastTime;
 
-            // 秒数のブラーを描画する
-            this.RecastTimeBlurTextBlock.FontFamily = this.RecastTimeTextBlock.FontFamily;
-            this.RecastTimeBlurTextBlock.FontSize = this.RecastTimeTextBlock.FontSize;
-            this.RecastTimeBlurTextBlock.FontStyle = this.RecastTimeTextBlock.FontStyle;
-            this.RecastTimeBlurTextBlock.FontWeight = this.RecastTimeTextBlock.FontWeight;
-            this.RecastTimeBlurTextBlock.Foreground = new SolidColorBrush(Colors.WhiteSmoke);
-            this.RecastTimeBlurTextBlock.Text = this.RecastTimeTextBlock.Text;
-
             // プログレスバーを描画する
             var progressBarColor = Color.FromRgb(
                 Settings.Default.OverlayColor.R,
@@ -290,7 +253,6 @@
                 Settings.Default.ProgressBarHeight,
                 0,
                 0);
-            this.RecastTimeBlurTextBlock.Margin = this.RecastTimeTextBlock.Margin;
 
             // Windowサイズを調整する
             this.Dispatcher.BeginInvoke(new Action(() =>

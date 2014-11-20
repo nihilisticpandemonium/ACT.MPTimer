@@ -20,6 +20,11 @@
         }
 
         /// <summary>
+        /// MPTimer Window
+        /// </summary>
+        public MPTimerWindow MPTimerWindow { get; set; }
+
+        /// <summary>
         /// Load
         /// </summary>
         /// <param name="sender">イベント発生元</param>
@@ -31,6 +36,17 @@
             this.OverlayWidthNumericUpDown.ValueChanged += (s1, e1) => this.SaveSettings();
             this.OverlayHeightNumericUpDown.ValueChanged += (s1, e1) => this.SaveSettings();
             this.TokaRitsuNumericUpDown.ValueChanged += (s1, e1) => this.SaveSettings();
+
+            this.ShokikaButton.Click += (s1, e1) =>
+            {
+                Settings.Default.Reset();
+                Settings.Default.Save();
+
+                this.MPTimerWindow.Top = Settings.Default.OverlayTop;
+                this.MPTimerWindow.Left = Settings.Default.OverlayLeft;
+
+                this.LoadSettings();
+            };
         }
 
         /// <summary>

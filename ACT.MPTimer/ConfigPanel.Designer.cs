@@ -42,6 +42,7 @@
             this.FontColorButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.TokaRitsuNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.ShokikaButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.OverlayWidthNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OverlayHeightNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TokaRitsuNumericUpDown)).BeginInit();
@@ -50,33 +51,37 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 27);
+            this.label1.Location = new System.Drawing.Point(4, 34);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 12);
+            this.label1.Size = new System.Drawing.Size(135, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "プログレスバーのサイズ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(163, 27);
+            this.label2.Location = new System.Drawing.Point(217, 34);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(14, 12);
+            this.label2.Size = new System.Drawing.Size(18, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "W";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(268, 27);
+            this.label3.Location = new System.Drawing.Point(357, 34);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(13, 12);
+            this.label3.Size = new System.Drawing.Size(17, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "H";
             // 
             // OverlayWidthNumericUpDown
             // 
-            this.OverlayWidthNumericUpDown.Location = new System.Drawing.Point(181, 23);
+            this.OverlayWidthNumericUpDown.Location = new System.Drawing.Point(241, 29);
+            this.OverlayWidthNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.OverlayWidthNumericUpDown.Maximum = new decimal(new int[] {
             1920,
             0,
@@ -88,7 +93,7 @@
             0,
             0});
             this.OverlayWidthNumericUpDown.Name = "OverlayWidthNumericUpDown";
-            this.OverlayWidthNumericUpDown.Size = new System.Drawing.Size(65, 19);
+            this.OverlayWidthNumericUpDown.Size = new System.Drawing.Size(87, 22);
             this.OverlayWidthNumericUpDown.TabIndex = 3;
             this.OverlayWidthNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.OverlayWidthNumericUpDown.Value = new decimal(new int[] {
@@ -99,7 +104,8 @@
             // 
             // OverlayHeightNumericUpDown
             // 
-            this.OverlayHeightNumericUpDown.Location = new System.Drawing.Point(285, 23);
+            this.OverlayHeightNumericUpDown.Location = new System.Drawing.Point(380, 29);
+            this.OverlayHeightNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.OverlayHeightNumericUpDown.Maximum = new decimal(new int[] {
             1080,
             0,
@@ -111,7 +117,7 @@
             0,
             0});
             this.OverlayHeightNumericUpDown.Name = "OverlayHeightNumericUpDown";
-            this.OverlayHeightNumericUpDown.Size = new System.Drawing.Size(65, 19);
+            this.OverlayHeightNumericUpDown.Size = new System.Drawing.Size(87, 22);
             this.OverlayHeightNumericUpDown.TabIndex = 4;
             this.OverlayHeightNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.OverlayHeightNumericUpDown.Value = new decimal(new int[] {
@@ -123,9 +129,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 53);
+            this.label4.Location = new System.Drawing.Point(4, 66);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 12);
+            this.label4.Size = new System.Drawing.Size(131, 15);
             this.label4.TabIndex = 6;
             this.label4.Text = "オーバーレイの見た目";
             // 
@@ -139,18 +146,20 @@
             // 
             this.DummyOverlayLabel.BackColor = System.Drawing.Color.OrangeRed;
             this.DummyOverlayLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.DummyOverlayLabel.Location = new System.Drawing.Point(163, 53);
+            this.DummyOverlayLabel.Location = new System.Drawing.Point(217, 66);
+            this.DummyOverlayLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DummyOverlayLabel.Name = "DummyOverlayLabel";
-            this.DummyOverlayLabel.Size = new System.Drawing.Size(216, 48);
+            this.DummyOverlayLabel.Size = new System.Drawing.Size(288, 60);
             this.DummyOverlayLabel.TabIndex = 7;
             this.DummyOverlayLabel.Text = "2.56 ";
             this.DummyOverlayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // BackColorButton
             // 
-            this.BackColorButton.Location = new System.Drawing.Point(163, 104);
+            this.BackColorButton.Location = new System.Drawing.Point(217, 130);
+            this.BackColorButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BackColorButton.Name = "BackColorButton";
-            this.BackColorButton.Size = new System.Drawing.Size(68, 23);
+            this.BackColorButton.Size = new System.Drawing.Size(91, 29);
             this.BackColorButton.TabIndex = 8;
             this.BackColorButton.Text = "背景色";
             this.BackColorButton.UseVisualStyleBackColor = true;
@@ -158,9 +167,10 @@
             // 
             // FontButton
             // 
-            this.FontButton.Location = new System.Drawing.Point(237, 104);
+            this.FontButton.Location = new System.Drawing.Point(316, 130);
+            this.FontButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FontButton.Name = "FontButton";
-            this.FontButton.Size = new System.Drawing.Size(68, 23);
+            this.FontButton.Size = new System.Drawing.Size(91, 29);
             this.FontButton.TabIndex = 9;
             this.FontButton.Text = "フォント";
             this.FontButton.UseVisualStyleBackColor = true;
@@ -168,9 +178,10 @@
             // 
             // FontColorButton
             // 
-            this.FontColorButton.Location = new System.Drawing.Point(311, 104);
+            this.FontColorButton.Location = new System.Drawing.Point(415, 130);
+            this.FontColorButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FontColorButton.Name = "FontColorButton";
-            this.FontColorButton.Size = new System.Drawing.Size(68, 23);
+            this.FontColorButton.Size = new System.Drawing.Size(91, 29);
             this.FontColorButton.TabIndex = 10;
             this.FontColorButton.Text = "フォント色";
             this.FontColorButton.UseVisualStyleBackColor = true;
@@ -179,17 +190,19 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 137);
+            this.label5.Location = new System.Drawing.Point(4, 171);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.Size = new System.Drawing.Size(52, 15);
             this.label5.TabIndex = 11;
             this.label5.Text = "透過率";
             // 
             // TokaRitsuNumericUpDown
             // 
-            this.TokaRitsuNumericUpDown.Location = new System.Drawing.Point(163, 133);
+            this.TokaRitsuNumericUpDown.Location = new System.Drawing.Point(217, 166);
+            this.TokaRitsuNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TokaRitsuNumericUpDown.Name = "TokaRitsuNumericUpDown";
-            this.TokaRitsuNumericUpDown.Size = new System.Drawing.Size(65, 19);
+            this.TokaRitsuNumericUpDown.Size = new System.Drawing.Size(87, 22);
             this.TokaRitsuNumericUpDown.TabIndex = 12;
             this.TokaRitsuNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TokaRitsuNumericUpDown.Value = new decimal(new int[] {
@@ -198,10 +211,21 @@
             0,
             0});
             // 
+            // ShokikaButton
+            // 
+            this.ShokikaButton.Location = new System.Drawing.Point(414, 223);
+            this.ShokikaButton.Margin = new System.Windows.Forms.Padding(4);
+            this.ShokikaButton.Name = "ShokikaButton";
+            this.ShokikaButton.Size = new System.Drawing.Size(91, 29);
+            this.ShokikaButton.TabIndex = 13;
+            this.ShokikaButton.Text = "初期化";
+            this.ShokikaButton.UseVisualStyleBackColor = true;
+            // 
             // ConfigPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ShokikaButton);
             this.Controls.Add(this.TokaRitsuNumericUpDown);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.FontColorButton);
@@ -214,8 +238,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ConfigPanel";
-            this.Size = new System.Drawing.Size(400, 161);
+            this.Size = new System.Drawing.Size(533, 256);
             this.Load += new System.EventHandler(this.ConfigPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.OverlayWidthNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OverlayHeightNumericUpDown)).EndInit();
@@ -241,5 +266,6 @@
         private System.Windows.Forms.Button FontColorButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown TokaRitsuNumericUpDown;
+        private System.Windows.Forms.Button ShokikaButton;
     }
 }

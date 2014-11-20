@@ -45,17 +45,18 @@
                 // アップデートを確認する
                 this.Update();
 
-                // 設定Panelを追加する
-                var panel = new ConfigPanel();
-                panel.Dock = DockStyle.Fill;
-                pluginScreenSpace.Controls.Add(panel);
-
                 // FF14監視スレッドを開始する
                 FF14Watcher.Initialize();
 
                 // MP回復タイミングFormを表示する
                 this.MPTimerWindow = new MPTimerWindow();
                 this.MPTimerWindow.Show();
+
+                // 設定Panelを追加する
+                var panel = new ConfigPanel();
+                panel.MPTimerWindow = this.MPTimerWindow;
+                panel.Dock = DockStyle.Fill;
+                pluginScreenSpace.Controls.Add(panel);
 
                 this.PluginStatusLabel = pluginStatusText;
                 this.PluginStatusLabel.Text = "Plugin Started";
@@ -73,6 +74,11 @@
         /// </summary>
         void IActPluginV1.DeInitPlugin()
         {
+            // Windowの位置を保存する
+            Settings.Default.OverlayTop = (int)this.MPTimerWindow.Top;
+            Settings.Default.OverlayLeft = (int)this.MPTimerWindow.Left;
+            Settings.Default.Save();
+
             FF14Watcher.Deinitialize();
             this.MPTimerWindow.Close();
 
