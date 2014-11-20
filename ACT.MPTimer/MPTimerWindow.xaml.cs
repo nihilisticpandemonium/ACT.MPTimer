@@ -16,6 +16,11 @@
     public partial class MPTimerWindow : Window
     {
         /// <summary>
+        /// ロックオブジェクト
+        /// </summary>
+        private static object lockObject = new object();
+
+        /// <summary>
         /// MP監視タイマ
         /// </summary>
         private DispatcherTimer MPWatchTimer;
@@ -61,19 +66,30 @@
             // マウスの移動を定義する
             this.MouseLeftButtonDown += (s1, e1) =>
             {
-                this.IsDragging = true;
-                this.DragMove();
+                lock (lockObject)
+                {
+                    this.IsDragging = true;
+                    this.DragMove();
+                }
             };
 
             this.MouseLeftButtonUp += (s1, e1) =>
             {
-                this.IsDragging = false;
+                lock (lockObject)
+                {
+                    this.IsDragging = false;
+                }
             };
 
             // 停止動作を定義する
             this.MouseDoubleClick += (s1, e1) =>
             {
-                this.IsStopping = !this.IsStopping;
+                lock (lockObject)
+                {
+                    this.IsStopping = !this.IsStopping;
+                    this.IsDragging = false;
+                    this.MPWatchCore();
+                }
             };
 
             // MP監視タイマを開始する
@@ -92,6 +108,17 @@
         /// <param name="sender">イベント発生元</param>
         /// <param name="e">イベント引数</param>
         private void MPWatchTimer_Tick(object sender, EventArgs e)
+        {
+            lock (lockObject)
+            {
+                this.MPWatchCore();
+            }
+        }
+
+        /// <summary>
+        /// MP監視タイマの中核
+        /// </summary>
+        private void MPWatchCore()
         {
             try
             {
@@ -114,6 +141,7 @@
                 // ACTが表示されていなければ何もしない
                 if (!ActGlobals.oFormActMain.Visible)
                 {
+                    this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 5, 0);
                     this.Visibility = Visibility.Hidden;
                     return;
                 }
@@ -123,6 +151,7 @@
                 var ff14 = FF14PluginHelper.GetFFXIVProcess;
                 if (ff14 == null)
                 {
+                    this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 5, 0);
                     this.Visibility = Visibility.Hidden;
                     return;
                 }
@@ -130,10 +159,14 @@
                 // プレイヤーがいない？
                 if (!FF14Watcher.Default.ExistPlayer)
                 {
+                    this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 5, 0);
                     this.Visibility = Visibility.Hidden;
                     return;
                 }
 #endif
+
+                // 監視間隔を短くする
+                this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 0, 50);
 
                 // Windowの透過率を設定する
                 this.Opacity = (100d - Settings.Default.OverlayOpacity) / 100d;
@@ -165,13 +198,13 @@
             var recastTime = string.Empty;
             if (FF14Watcher.Default.TimeOfRecovery > 0)
             {
-                recastTime = ((decimal)FF14Watcher.Default.TimeOfRecovery / 1000m).ToString("0.00");
+                recastTime = ((decimal)FF14Watcher.Default.TimeOfRecovery / 1000m).ToString("0.0");
             }
 
 #if DEBUG
             if (string.IsNullOrWhiteSpace(recastTime))
             {
-                recastTime = "3.00";
+                recastTime = "3.0";
             }
 #endif
 
@@ -218,6 +251,8 @@
             foreRect.Fill = foreBrush;
             foreRect.Width = (double)(Settings.Default.ProgressBarWidth * rateOfMPRecovery);
             foreRect.Height = Settings.Default.ProgressBarHeight;
+            foreRect.RadiusX = 5.0d;
+            foreRect.RadiusY = 5.0d;
             Canvas.SetLeft(foreRect, 0);
             Canvas.SetTop(foreRect, 0);
 
@@ -225,13 +260,16 @@
             var backBrush = new SolidColorBrush(backColor);
             backRect.Stroke = backBrush;
             backRect.Fill = backBrush;
-            backRect.Width = Settings.Default.ProgressBarWidth - foreRect.Width;
+            backRect.Width = Settings.Default.ProgressBarWidth;
             backRect.Height = Settings.Default.ProgressBarHeight;
+            backRect.RadiusX = 5.0d;
+            backRect.RadiusY = 5.0d;
             Canvas.SetLeft(backRect, foreRect.Width);
             Canvas.SetTop(backRect, 0);
 
-            this.ProgressBarCanvas.Children.Add(foreRect);
+            this.ProgressBarCanvas.Children.Clear();
             this.ProgressBarCanvas.Children.Add(backRect);
+            this.ProgressBarCanvas.Children.Add(foreRect);
 
             // Windowサイズを調整する
             this.Width = Settings.Default.ProgressBarWidth;
