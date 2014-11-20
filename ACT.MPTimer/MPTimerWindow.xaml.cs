@@ -272,7 +272,7 @@
             backRect.Height = Settings.Default.ProgressBarHeight;
             backRect.RadiusX = 5.0d;
             backRect.RadiusY = 5.0d;
-            Canvas.SetLeft(backRect, foreRect.Width);
+            Canvas.SetLeft(backRect, 0);
             Canvas.SetTop(backRect, 0);
 
             this.ProgressBarCanvas.Children.Clear();
