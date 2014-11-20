@@ -219,21 +219,29 @@
             }
 
             // 秒数を描画する
-            this.RecastTimeLabel.FontFamily = new FontFamily(Settings.Default.OverlayFont.Name);
-            this.RecastTimeLabel.FontSize = Settings.Default.OverlayFont.Size / 72.0 * 96.0;
-            this.RecastTimeLabel.FontStyle =
+            this.RecastTimeTextBlock.FontFamily = new FontFamily(Settings.Default.OverlayFont.Name);
+            this.RecastTimeTextBlock.FontSize = Settings.Default.OverlayFont.Size / 72.0 * 96.0;
+            this.RecastTimeTextBlock.FontStyle =
                 (Settings.Default.OverlayFont.Style & System.Drawing.FontStyle.Italic) != 0 ?
                 FontStyles.Italic :
                 FontStyles.Normal;
-            this.RecastTimeLabel.FontWeight =
+            this.RecastTimeTextBlock.FontWeight =
                 (Settings.Default.OverlayFont.Style & System.Drawing.FontStyle.Bold) != 0 ?
                 FontWeights.Bold :
                 FontWeights.Normal;
-            this.RecastTimeLabel.Foreground = new SolidColorBrush(Color.FromRgb(
+            this.RecastTimeTextBlock.Foreground = new SolidColorBrush(Color.FromRgb(
                 Settings.Default.OverlayFontColor.R,
                 Settings.Default.OverlayFontColor.G,
                 Settings.Default.OverlayFontColor.B));
-            this.RecastTimeLabel.Content = recastTime;
+            this.RecastTimeTextBlock.Text = recastTime;
+
+            // 秒数のブラーを描画する
+            this.RecastTimeBlurTextBlock.FontFamily = this.RecastTimeTextBlock.FontFamily;
+            this.RecastTimeBlurTextBlock.FontSize = this.RecastTimeTextBlock.FontSize;
+            this.RecastTimeBlurTextBlock.FontStyle = this.RecastTimeTextBlock.FontStyle;
+            this.RecastTimeBlurTextBlock.FontWeight = this.RecastTimeTextBlock.FontWeight;
+            this.RecastTimeBlurTextBlock.Foreground = new SolidColorBrush(Colors.WhiteSmoke);
+            this.RecastTimeBlurTextBlock.Text = this.RecastTimeTextBlock.Text;
 
             // プログレスバーを描画する
             var progressBarColor = Color.FromRgb(
@@ -273,7 +281,7 @@
 
             // Windowサイズを調整する
             this.Width = Settings.Default.ProgressBarWidth;
-            this.Height = (Settings.Default.ProgressBarHeight + this.RecastTimeLabel.Height) * 1.5d;
+            this.Height = (Settings.Default.ProgressBarHeight + this.RecastTimeTextBlock.Height) * 1.5d;
 
             // プログレスバーキャンパスのレイアウトを調整する
             this.ProgressBarCanvas.Width = Settings.Default.ProgressBarWidth;
@@ -281,11 +289,12 @@
             this.ProgressBarCanvas.Margin = new Thickness(0, 0, 0, 0);
 
             // 秒数ラベルのレイアウトを調整する
-            this.RecastTimeLabel.Margin = new Thickness(
+            this.RecastTimeTextBlock.Margin = new Thickness(
                 0,
                 Settings.Default.ProgressBarHeight,
                 0,
                 0);
+            this.RecastTimeBlurTextBlock.Margin = this.RecastTimeTextBlock.Margin;
         }
     }
 }

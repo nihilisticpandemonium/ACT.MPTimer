@@ -61,7 +61,7 @@ namespace ACT.MPTimer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("OrangeRed")]
+        [global::System.Configuration.DefaultSettingValueAttribute("DodgerBlue")]
         public global::System.Drawing.Color OverlayColor {
             get {
                 return ((global::System.Drawing.Color)(this["OverlayColor"]));
@@ -109,7 +109,7 @@ namespace ACT.MPTimer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DimGray")]
+        [global::System.Configuration.DefaultSettingValueAttribute("MediumBlue")]
         public global::System.Drawing.Color OverlayFontColor {
             get {
                 return ((global::System.Drawing.Color)(this["OverlayFontColor"]));

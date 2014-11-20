@@ -4,21 +4,37 @@
         Title="MPTimerWindow" Height="300" Width="300"
         AllowsTransparency="True" WindowStyle="None" Opacity="1" Background="{x:Null}">
     <Grid>
-        <Label
-            x:Name="RecastTimeLabel"
-            Content="2.9"
-            Padding="1"
-            HorizontalContentAlignment="Right"
-            VerticalContentAlignment="Top"
-            HorizontalAlignment="Right"
-            Margin="0,26,0,0"
-            VerticalAlignment="Top"
-            FontSize="50"
-            Background="#05000000"/>
 
         <Canvas
             x:Name="ProgressBarCanvas"
             Height="21"
             VerticalAlignment="Top"/>
+
+        <TextBlock
+            x:Name="RecastTimeBlurTextBlock"
+            Text="2.9"
+            Padding="1"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            TextAlignment="Right"
+            Margin="216,189,0,0"
+            TextWrapping="NoWrap">
+            <TextBlock.Effect>
+                <BlurEffect 
+                    Radius="6" 
+                    RenderingBias="Quality" />
+            </TextBlock.Effect>
+        </TextBlock>
+        
+        <TextBlock
+            x:Name="RecastTimeTextBlock"
+            Text="2.9"
+            Padding="1"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            TextAlignment="Right"
+            Margin="216,189,0,0"
+            TextWrapping="NoWrap">
+        </TextBlock>
     </Grid>
 </Window>
