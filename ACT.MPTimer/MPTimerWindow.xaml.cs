@@ -259,8 +259,8 @@
             foreRect.Fill = foreBrush;
             foreRect.Width = (double)(Settings.Default.ProgressBarWidth * rateOfMPRecovery);
             foreRect.Height = Settings.Default.ProgressBarHeight;
-            foreRect.RadiusX = 5.0d;
-            foreRect.RadiusY = 5.0d;
+            foreRect.RadiusX = 4.0d;
+            foreRect.RadiusY = 4.0d;
             Canvas.SetLeft(foreRect, 0);
             Canvas.SetTop(foreRect, 0);
 
@@ -270,18 +270,14 @@
             backRect.Fill = backBrush;
             backRect.Width = Settings.Default.ProgressBarWidth;
             backRect.Height = Settings.Default.ProgressBarHeight;
-            backRect.RadiusX = 5.0d;
-            backRect.RadiusY = 5.0d;
+            backRect.RadiusX = 4.0d;
+            backRect.RadiusY = 4.0d;
             Canvas.SetLeft(backRect, 0);
             Canvas.SetTop(backRect, 0);
 
             this.ProgressBarCanvas.Children.Clear();
             this.ProgressBarCanvas.Children.Add(backRect);
             this.ProgressBarCanvas.Children.Add(foreRect);
-
-            // Windowサイズを調整する
-            this.Width = Settings.Default.ProgressBarWidth;
-            this.Height = (Settings.Default.ProgressBarHeight + this.RecastTimeTextBlock.Height) * 1.5d;
 
             // プログレスバーキャンパスのレイアウトを調整する
             this.ProgressBarCanvas.Width = Settings.Default.ProgressBarWidth;
@@ -295,6 +291,14 @@
                 0,
                 0);
             this.RecastTimeBlurTextBlock.Margin = this.RecastTimeTextBlock.Margin;
+
+            // Windowサイズを調整する
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                this.Width = Settings.Default.ProgressBarWidth;
+                this.Height = Settings.Default.ProgressBarHeight + this.RecastTimeTextBlock.ActualHeight;
+            }),
+            DispatcherPriority.Loaded);
         }
     }
 }
