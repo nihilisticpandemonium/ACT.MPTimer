@@ -185,7 +185,7 @@
             // 戦闘中のみ？
             if (Settings.Default.CountInCombat)
             {
-                this.IsStopping = FF14Watcher.Default.InCombat;
+                this.IsStopping = !FF14Watcher.Default.InCombat;
             }
 
             // 停止中？
