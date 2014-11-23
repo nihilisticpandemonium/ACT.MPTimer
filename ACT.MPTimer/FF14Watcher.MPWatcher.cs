@@ -2,6 +2,8 @@
 {
     using System;
 
+    using ACT.MPTimer.Properties;
+
     /// <summary>
     /// FF14を監視する MPウォッチャー
     /// </summary>
@@ -51,6 +53,16 @@
             }
 
             this.ExistPlayer = true;
+
+            // ジョブ指定？
+            if (Settings.Default.TargetJobId != 0)
+            {
+                this.ExistPlayer = player.Job == Settings.Default.TargetJobId;
+                if (!this.ExistPlayer)
+                {
+                    return;
+                }
+            }
 
             var now = DateTime.Now;
 

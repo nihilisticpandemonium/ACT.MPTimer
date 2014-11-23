@@ -31,11 +31,17 @@
         /// <param name="e">イベント引数</param>
         private void ConfigPanel_Load(object sender, EventArgs e)
         {
+            this.TargetJobComboBox.DataSource = Job.GetJobList();
+            this.TargetJobComboBox.ValueMember = "JobId";
+            this.TargetJobComboBox.DisplayMember = "JobName";
+
             this.LoadSettings();
 
             this.OverlayWidthNumericUpDown.ValueChanged += (s1, e1) => this.SaveSettings();
             this.OverlayHeightNumericUpDown.ValueChanged += (s1, e1) => this.SaveSettings();
             this.TokaRitsuNumericUpDown.ValueChanged += (s1, e1) => this.SaveSettings();
+            this.CountInCombatCheckBox.CheckedChanged += (s1, e1) => this.SaveSettings();
+            this.TargetJobComboBox.SelectedValueChanged += (s1, e1) => this.SaveSettings();
 
             this.ShokikaButton.Click += (s1, e1) =>
             {
@@ -107,6 +113,9 @@
             this.DummyOverlayLabel.Font = Settings.Default.OverlayFont;
 
             this.TokaRitsuNumericUpDown.Value = Settings.Default.OverlayOpacity;
+
+            this.CountInCombatCheckBox.Checked = Settings.Default.CountInCombat;
+            this.TargetJobComboBox.SelectedValue = Settings.Default.TargetJobId;
         }
 
         /// <summary>
@@ -122,6 +131,9 @@
             Settings.Default.OverlayFont = this.DummyOverlayLabel.Font;
 
             Settings.Default.OverlayOpacity = (int)this.TokaRitsuNumericUpDown.Value;
+
+            Settings.Default.CountInCombat = this.CountInCombatCheckBox.Checked;
+            Settings.Default.TargetJobId = (int)this.TargetJobComboBox.SelectedValue;
 
             Settings.Default.Save();
         }

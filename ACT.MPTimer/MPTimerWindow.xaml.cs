@@ -182,10 +182,16 @@
             // 進捗率を取得する
             var rateOfMPRecovery = FF14Watcher.Default.RateOfRecovery;
 
+            // 戦闘中のみ？
+            if (Settings.Default.CountInCombat)
+            {
+                this.IsStopping = FF14Watcher.Default.InCombat;
+            }
+
             // 停止中？
             if (this.IsStopping)
             {
-                recastTime = "Stoped";
+                recastTime = "Ready";
                 rateOfMPRecovery = 1m;
             }
 

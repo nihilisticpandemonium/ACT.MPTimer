@@ -64,6 +64,7 @@
     <Compile Include="FF14Watcher.cs" />
     <Compile Include="FF14Watcher.FF14PluginWrapper.cs" />
     <Compile Include="FF14Watcher.MPWatcher.cs" />
+    <Compile Include="Job.cs" />
     <Compile Include="MPTimerPlugin.cs" />
     <Compile Include="MPTimerWindow.xaml.cs">
       <DependentUpon>MPTimerWindow.xaml</DependentUpon>
