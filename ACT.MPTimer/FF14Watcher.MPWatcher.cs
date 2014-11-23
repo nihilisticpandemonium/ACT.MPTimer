@@ -30,12 +30,22 @@
         public DateTime NextRecoveryDateTime { get; private set; }
 
         /// <summary>
+        /// 最後にMPが満タンになった日時
+        /// </summary>
+        public DateTime LastMPFullDateTime { get; private set; }
+
+        /// <summary>
         /// プレイヤーがいるか？
         /// </summary>
         public bool ExistPlayer { get; private set; }
 
         /// <summary>
-        /// 直前のTP
+        /// 戦闘中？
+        /// </summary>
+        public bool InCombat { get; private set; }
+
+        /// <summary>
+        /// 直前のMP
         /// </summary>
         private int PreviousMP { get; set; }
 
@@ -61,6 +71,32 @@
                 if (!this.ExistPlayer)
                 {
                     return;
+                }
+            }
+
+            // 戦闘中のみ稼働させる？
+            if (Settings.Default.CountInCombat)
+            {
+                // MPが満タンになった？
+                if (player.CurrentMP > this.PreviousMP &&
+                    player.CurrentMP >= player.MaxMP)
+                {
+                    this.LastMPFullDateTime = DateTime.Now;
+                }
+
+                // 現在がMP満タン状態？
+                if (player.CurrentMP >= player.MaxMP ||
+                    this.PreviousMP < 0)
+                {
+                    // 前回の満タンから20秒以上経過した？
+                    if ((DateTime.Now - this.LastMPFullDateTime).TotalSeconds >= 20.0d)
+                    {
+                        this.InCombat = false;
+                    }
+                }
+                else
+                {
+                    this.InCombat = true;
                 }
             }
 

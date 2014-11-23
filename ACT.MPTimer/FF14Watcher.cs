@@ -26,11 +26,6 @@
         private Timer watchTimer;
 
         /// <summary>
-        /// 戦闘中？
-        /// </summary>
-        public bool InCombat;
-
-        /// <summary>
         /// シングルトンインスタンス
         /// </summary>
         public static FF14Watcher Default
@@ -51,7 +46,10 @@
             {
                 if (instance == null)
                 {
-                    instance = new FF14Watcher();
+                    instance = new FF14Watcher()
+                    {
+                        PreviousMP = -1
+                    };
 
                     instance.watchTimer = new Timer()
                     {
@@ -64,17 +62,6 @@
 
                     // 監視を開始する
                     instance.watchTimer.Start();
-
-                    // ACTのログ読み取りにイベントを仕込む
-                    ActGlobals.oFormActMain.OnLogLineRead += (isImport, logInfo) =>
-                    {
-                        if (isImport)
-                        {
-                            return;
-                        }
-
-                        instance.InCombat = logInfo.inCombat;
-                    };
                 }
             }
         }
