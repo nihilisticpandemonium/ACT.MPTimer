@@ -89,7 +89,8 @@
                     this.PreviousMP < 0)
                 {
                     // 前回の満タンから20秒以上経過した？
-                    if ((DateTime.Now - this.LastMPFullDateTime).TotalSeconds >= 20.0d)
+                    if ((DateTime.Now - this.LastMPFullDateTime).TotalSeconds >= 
+                        Settings.Default.CountInCombatSpan)
                     {
                         this.InCombat = false;
                     }

@@ -76,6 +76,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="UpdateChecker.cs" />
+    <Compile Include="WindowExtension.Transparent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

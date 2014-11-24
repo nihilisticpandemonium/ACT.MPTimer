@@ -154,5 +154,29 @@ namespace ACT.MPTimer.Properties {
                 this["TargetJobId"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int CountInCombatSpan {
+            get {
+                return ((int)(this["CountInCombatSpan"]));
+            }
+            set {
+                this["CountInCombatSpan"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ClickThrough {
+            get {
+                return ((bool)(this["ClickThrough"]));
+            }
+            set {
+                this["ClickThrough"] = value;
+            }
+        }
     }
 }

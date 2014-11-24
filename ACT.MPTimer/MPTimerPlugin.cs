@@ -51,6 +51,10 @@
                 // MP回復タイミングFormを表示する
                 this.MPTimerWindow = new MPTimerWindow();
                 this.MPTimerWindow.Show();
+                if (Settings.Default.ClickThrough)
+                {
+                    this.MPTimerWindow.ToTransparentWindow();
+                }
 
                 // 設定Panelを追加する
                 var panel = new ConfigPanel();

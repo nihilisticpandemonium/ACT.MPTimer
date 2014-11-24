@@ -41,7 +41,22 @@
             this.OverlayHeightNumericUpDown.ValueChanged += (s1, e1) => this.SaveSettings();
             this.TokaRitsuNumericUpDown.ValueChanged += (s1, e1) => this.SaveSettings();
             this.CountInCombatCheckBox.CheckedChanged += (s1, e1) => this.SaveSettings();
+            this.CountInCombatNumericUpDown.ValueChanged += (s1, e1) => this.SaveSettings();
             this.TargetJobComboBox.SelectedValueChanged += (s1, e1) => this.SaveSettings();
+            this.ClickThroughCheckBox.CheckedChanged += (s1, e1) =>
+            {
+                Settings.Default.OverlayTop = (int)this.MPTimerWindow.Top;
+                Settings.Default.OverlayLeft = (int)this.MPTimerWindow.Left;
+                this.SaveSettings();
+
+                this.MPTimerWindow.Close();
+                this.MPTimerWindow = new MPTimerWindow();
+                this.MPTimerWindow.Show();
+                if (Settings.Default.ClickThrough)
+                {
+                    this.MPTimerWindow.ToTransparentWindow();
+                }
+            };
 
             this.ShokikaButton.Click += (s1, e1) =>
             {
@@ -115,7 +130,9 @@
             this.TokaRitsuNumericUpDown.Value = Settings.Default.OverlayOpacity;
 
             this.CountInCombatCheckBox.Checked = Settings.Default.CountInCombat;
+            this.CountInCombatNumericUpDown.Value = Settings.Default.CountInCombatSpan;
             this.TargetJobComboBox.SelectedValue = Settings.Default.TargetJobId;
+            this.ClickThroughCheckBox.Checked = Settings.Default.ClickThrough;
         }
 
         /// <summary>
@@ -133,7 +150,9 @@
             Settings.Default.OverlayOpacity = (int)this.TokaRitsuNumericUpDown.Value;
 
             Settings.Default.CountInCombat = this.CountInCombatCheckBox.Checked;
+            Settings.Default.CountInCombatSpan = (int)this.CountInCombatNumericUpDown.Value;
             Settings.Default.TargetJobId = (int)this.TargetJobComboBox.SelectedValue;
+            Settings.Default.ClickThrough = this.ClickThroughCheckBox.Checked;
 
             Settings.Default.Save();
         }

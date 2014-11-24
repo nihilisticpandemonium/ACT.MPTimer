@@ -47,9 +47,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.TargetJobComboBox = new System.Windows.Forms.ComboBox();
+            this.CountInCombatNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.ClickThroughCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.OverlayWidthNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OverlayHeightNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TokaRitsuNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CountInCombatNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -94,7 +99,7 @@
             0});
             this.OverlayWidthNumericUpDown.Name = "OverlayWidthNumericUpDown";
             this.OverlayWidthNumericUpDown.Size = new System.Drawing.Size(65, 19);
-            this.OverlayWidthNumericUpDown.TabIndex = 3;
+            this.OverlayWidthNumericUpDown.TabIndex = 0;
             this.OverlayWidthNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.OverlayWidthNumericUpDown.Value = new decimal(new int[] {
             1,
@@ -117,7 +122,7 @@
             0});
             this.OverlayHeightNumericUpDown.Name = "OverlayHeightNumericUpDown";
             this.OverlayHeightNumericUpDown.Size = new System.Drawing.Size(65, 19);
-            this.OverlayHeightNumericUpDown.TabIndex = 4;
+            this.OverlayHeightNumericUpDown.TabIndex = 1;
             this.OverlayHeightNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.OverlayHeightNumericUpDown.Value = new decimal(new int[] {
             1,
@@ -156,7 +161,7 @@
             this.BackColorButton.Location = new System.Drawing.Point(163, 104);
             this.BackColorButton.Name = "BackColorButton";
             this.BackColorButton.Size = new System.Drawing.Size(68, 23);
-            this.BackColorButton.TabIndex = 8;
+            this.BackColorButton.TabIndex = 2;
             this.BackColorButton.Text = "背景色";
             this.BackColorButton.UseVisualStyleBackColor = true;
             this.BackColorButton.Click += new System.EventHandler(this.BackColorButton_Click);
@@ -166,7 +171,7 @@
             this.FontButton.Location = new System.Drawing.Point(237, 104);
             this.FontButton.Name = "FontButton";
             this.FontButton.Size = new System.Drawing.Size(68, 23);
-            this.FontButton.TabIndex = 9;
+            this.FontButton.TabIndex = 3;
             this.FontButton.Text = "フォント";
             this.FontButton.UseVisualStyleBackColor = true;
             this.FontButton.Click += new System.EventHandler(this.FontButton_Click);
@@ -176,7 +181,7 @@
             this.FontColorButton.Location = new System.Drawing.Point(311, 104);
             this.FontColorButton.Name = "FontColorButton";
             this.FontColorButton.Size = new System.Drawing.Size(68, 23);
-            this.FontColorButton.TabIndex = 10;
+            this.FontColorButton.TabIndex = 4;
             this.FontColorButton.Text = "フォント色";
             this.FontColorButton.UseVisualStyleBackColor = true;
             this.FontColorButton.Click += new System.EventHandler(this.FontColorButton_Click);
@@ -195,7 +200,7 @@
             this.TokaRitsuNumericUpDown.Location = new System.Drawing.Point(163, 133);
             this.TokaRitsuNumericUpDown.Name = "TokaRitsuNumericUpDown";
             this.TokaRitsuNumericUpDown.Size = new System.Drawing.Size(65, 19);
-            this.TokaRitsuNumericUpDown.TabIndex = 12;
+            this.TokaRitsuNumericUpDown.TabIndex = 5;
             this.TokaRitsuNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TokaRitsuNumericUpDown.Value = new decimal(new int[] {
             1,
@@ -205,10 +210,10 @@
             // 
             // ShokikaButton
             // 
-            this.ShokikaButton.Location = new System.Drawing.Point(311, 240);
+            this.ShokikaButton.Location = new System.Drawing.Point(311, 303);
             this.ShokikaButton.Name = "ShokikaButton";
             this.ShokikaButton.Size = new System.Drawing.Size(68, 23);
-            this.ShokikaButton.TabIndex = 13;
+            this.ShokikaButton.TabIndex = 10;
             this.ShokikaButton.Text = "初期化";
             this.ShokikaButton.UseVisualStyleBackColor = true;
             // 
@@ -218,7 +223,7 @@
             this.CountInCombatCheckBox.Location = new System.Drawing.Point(163, 158);
             this.CountInCombatCheckBox.Name = "CountInCombatCheckBox";
             this.CountInCombatCheckBox.Size = new System.Drawing.Size(48, 16);
-            this.CountInCombatCheckBox.TabIndex = 14;
+            this.CountInCombatCheckBox.TabIndex = 6;
             this.CountInCombatCheckBox.Text = "有効";
             this.CountInCombatCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -234,7 +239,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 183);
+            this.label7.Location = new System.Drawing.Point(3, 208);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(132, 12);
             this.label7.TabIndex = 16;
@@ -244,15 +249,61 @@
             // 
             this.TargetJobComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TargetJobComboBox.FormattingEnabled = true;
-            this.TargetJobComboBox.Location = new System.Drawing.Point(163, 180);
+            this.TargetJobComboBox.Location = new System.Drawing.Point(163, 205);
             this.TargetJobComboBox.Name = "TargetJobComboBox";
             this.TargetJobComboBox.Size = new System.Drawing.Size(216, 20);
-            this.TargetJobComboBox.TabIndex = 17;
+            this.TargetJobComboBox.TabIndex = 8;
+            // 
+            // CountInCombatNumericUpDown
+            // 
+            this.CountInCombatNumericUpDown.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.CountInCombatNumericUpDown.Location = new System.Drawing.Point(163, 180);
+            this.CountInCombatNumericUpDown.Maximum = new decimal(new int[] {
+            3600,
+            0,
+            0,
+            0});
+            this.CountInCombatNumericUpDown.Name = "CountInCombatNumericUpDown";
+            this.CountInCombatNumericUpDown.Size = new System.Drawing.Size(63, 19);
+            this.CountInCombatNumericUpDown.TabIndex = 7;
+            this.CountInCombatNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(232, 182);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(138, 12);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "秒経過で戦闘終了とみなす";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 232);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(64, 12);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "クリックスルー";
+            // 
+            // ClickThroughCheckBox
+            // 
+            this.ClickThroughCheckBox.AutoSize = true;
+            this.ClickThroughCheckBox.Location = new System.Drawing.Point(163, 231);
+            this.ClickThroughCheckBox.Name = "ClickThroughCheckBox";
+            this.ClickThroughCheckBox.Size = new System.Drawing.Size(48, 16);
+            this.ClickThroughCheckBox.TabIndex = 9;
+            this.ClickThroughCheckBox.Text = "有効";
+            this.ClickThroughCheckBox.UseVisualStyleBackColor = true;
             // 
             // ConfigPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ClickThroughCheckBox);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.CountInCombatNumericUpDown);
             this.Controls.Add(this.TargetJobComboBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -271,11 +322,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ConfigPanel";
-            this.Size = new System.Drawing.Size(400, 266);
+            this.Size = new System.Drawing.Size(391, 329);
             this.Load += new System.EventHandler(this.ConfigPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.OverlayWidthNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OverlayHeightNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TokaRitsuNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CountInCombatNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,5 +354,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox TargetJobComboBox;
+        private System.Windows.Forms.NumericUpDown CountInCombatNumericUpDown;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox ClickThroughCheckBox;
     }
 }
