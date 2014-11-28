@@ -33,3 +33,9 @@ https://github.com/anoyetta/ACT.MPTimer/blob/master/LICENSE
 ・GB19xx様  
 https://github.com/GB19xx/ACT.TPMonitor  
 のFF14ヘルパークラスを流用させていただきました  
+  
+  
+問合せ
+--------------
+不具合報告、要望、質問及び最新版情報などはTwitterにて  
+GitHubと連動しているためツイートは少々五月蠅いかもしれません  
