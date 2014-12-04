@@ -88,7 +88,7 @@
                     this.PreviousMP < 0)
                 {
                     // 前回の満タンから20秒以上経過した？
-                    if ((DateTime.Now - this.LastMPFullDateTime).TotalSeconds >= 
+                    if ((DateTime.Now - this.LastMPFullDateTime).TotalSeconds >=
                         Settings.Default.CountInCombatSpan)
                     {
                         this.InCombat = false;
@@ -108,18 +108,16 @@
                 this.LastRecoveryDateTime = now;
                 this.NextRecoveryDateTime = this.LastRecoveryDateTime.AddSeconds(3d);
             }
-            else
-            {
-                // 一旦満タンである？
-                if (this.TimeOfRecovery <= 0)
-                {
-                    this.LastRecoveryDateTime = now;
-                    this.NextRecoveryDateTime = this.LastRecoveryDateTime.AddSeconds(3d);
-                }
-            }
 
             // 回復までの残り時間を算出する
             var remain = (this.NextRecoveryDateTime - now).TotalMilliseconds;
+
+            // 回復までの時間が過ぎている？
+            if (remain <= 0.0d)
+            {
+                this.LastRecoveryDateTime = now.AddMilliseconds(remain);
+                this.NextRecoveryDateTime = this.LastRecoveryDateTime.AddSeconds(3d);
+            }
 
             if (remain < 0d)
             {
