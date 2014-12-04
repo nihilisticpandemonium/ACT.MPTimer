@@ -24,7 +24,6 @@
         public Combatant GetPlayer()
         {
             var list = FF14PluginHelper.GetCombatantList();
-
             if (list.Count > 0)
             {
                 return list[0];

@@ -55,7 +55,6 @@
         public void WacthMPRecovery()
         {
             var player = this.GetPlayer();
-
             if (player == null)
             {
                 this.ExistPlayer = false;
