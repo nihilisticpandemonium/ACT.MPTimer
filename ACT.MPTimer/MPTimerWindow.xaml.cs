@@ -56,7 +56,7 @@
 
 #if !DEBUG
             // リリースではロード時は一先ず消しておく
-            this.Visibility = Visibility.Hidden;
+            this.Opacity = 0;
 #endif
 
             // マウスの移動を定義する
@@ -114,7 +114,7 @@
                 if (!ActGlobals.oFormActMain.Visible)
                 {
                     this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 1, 0);
-                    this.Visibility = Visibility.Hidden;
+                    this.Opacity = 0;
                     return;
                 }
 
@@ -124,7 +124,7 @@
                 if (ff14 == null)
                 {
                     this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 1, 0);
-                    this.Visibility = Visibility.Hidden;
+                    this.Opacity = 0;
                     return;
                 }
 
@@ -132,20 +132,16 @@
                 if (!FF14Watcher.Default.ExistPlayer)
                 {
                     this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 1, 0);
-                    this.Visibility = Visibility.Hidden;
+                    this.Opacity = 0;
                     return;
                 }
 #endif
 
-                // 監視間隔を短くする
-                this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 0, 50);
-
-                // Windowの透過率を設定する
-                this.Opacity = (100d - Settings.Default.OverlayOpacity) / 100d;
-
                 // リキャストタイマーを描画する
                 this.DrawRecastTimer();
-                this.Visibility = Visibility.Visible;
+
+                // 監視間隔を短くする
+                this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 0, 50);
             }
             catch (Exception ex)
             {
@@ -153,7 +149,7 @@
                     ex,
                     "ACT.MPTimer グラフの描画で例外が発生しました。");
 
-                this.Visibility = Visibility.Hidden;
+                this.Opacity = 0;
             }
             finally
             {
@@ -186,11 +182,7 @@
             // 戦闘中のみ？
             if (Settings.Default.CountInCombat)
             {
-                if (FF14Watcher.Default.InCombat)
-                {
-                    this.Opacity = (100d - Settings.Default.OverlayOpacity) / 100d;
-                }
-                else
+                if (!FF14Watcher.Default.InCombat)
                 {
                     this.Opacity = 0;
                     return;
@@ -203,6 +195,9 @@
                 recastTime = "Ready";
                 rateOfMPRecovery = 1m;
             }
+
+            // 透過率を設定する
+            this.Opacity = (100d - Settings.Default.OverlayOpacity) / 100d;
 
             Dispatcher.BeginInvoke(new Action(() =>
             {
