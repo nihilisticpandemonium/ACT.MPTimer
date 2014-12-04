@@ -37,49 +37,25 @@ namespace ACT.MPTimer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("7")]
-        public int ProgressBarHeight {
-            get {
-                return ((int)(this["ProgressBarHeight"]));
-            }
-            set {
-                this["ProgressBarHeight"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("110")]
-        public int ProgressBarWidth {
-            get {
-                return ((int)(this["ProgressBarWidth"]));
-            }
-            set {
-                this["ProgressBarWidth"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("OrangeRed")]
-        public global::System.Drawing.Color OverlayColor {
+        public global::System.Drawing.Color ProgressBarColor {
             get {
-                return ((global::System.Drawing.Color)(this["OverlayColor"]));
+                return ((global::System.Drawing.Color)(this["ProgressBarColor"]));
             }
             set {
-                this["OverlayColor"] = value;
+                this["ProgressBarColor"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("メイリオ, 9.75pt")]
-        public global::System.Drawing.Font OverlayFont {
+        public global::System.Drawing.Font Font {
             get {
-                return ((global::System.Drawing.Font)(this["OverlayFont"]));
+                return ((global::System.Drawing.Font)(this["Font"]));
             }
             set {
-                this["OverlayFont"] = value;
+                this["Font"] = value;
             }
         }
         
@@ -110,12 +86,12 @@ namespace ACT.MPTimer.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("LightGoldenrodYellow")]
-        public global::System.Drawing.Color OverlayFontColor {
+        public global::System.Drawing.Color FontColor {
             get {
-                return ((global::System.Drawing.Color)(this["OverlayFontColor"]));
+                return ((global::System.Drawing.Color)(this["FontColor"]));
             }
             set {
-                this["OverlayFontColor"] = value;
+                this["FontColor"] = value;
             }
         }
         
@@ -176,6 +152,42 @@ namespace ACT.MPTimer.Properties {
             }
             set {
                 this["ClickThrough"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("OrangeRed")]
+        public global::System.Drawing.Color ProgressBarOutlineColor {
+            get {
+                return ((global::System.Drawing.Color)(this["ProgressBarOutlineColor"]));
+            }
+            set {
+                this["ProgressBarOutlineColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("LightGoldenrodYellow")]
+        public global::System.Drawing.Color FontOutlineColor {
+            get {
+                return ((global::System.Drawing.Color)(this["FontOutlineColor"]));
+            }
+            set {
+                this["FontOutlineColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("110, 7")]
+        public global::System.Drawing.Size ProgressBarSize {
+            get {
+                return ((global::System.Drawing.Size)(this["ProgressBarSize"]));
+            }
+            set {
+                this["ProgressBarSize"] = value;
             }
         }
     }

@@ -8,6 +8,7 @@
     using System.Windows.Threading;
 
     using ACT.MPTimer.Properties;
+    using ACT.MPTimer.Utility;
     using Advanced_Combat_Tracker;
 
     /// <summary>
@@ -185,7 +186,15 @@
             // 戦闘中のみ？
             if (Settings.Default.CountInCombat)
             {
-                this.IsStopping = !FF14Watcher.Default.InCombat;
+                if (FF14Watcher.Default.InCombat)
+                {
+                    this.Opacity = (100d - Settings.Default.OverlayOpacity) / 100d;
+                }
+                else
+                {
+                    this.Opacity = 0;
+                    return;
+                }
             }
 
             // 停止中？
@@ -195,78 +204,64 @@
                 rateOfMPRecovery = 1m;
             }
 
-            // 秒数を描画する
-            this.RecastTimeTextBlock.FontFamily = new FontFamily(Settings.Default.OverlayFont.Name);
-            this.RecastTimeTextBlock.FontSize = Settings.Default.OverlayFont.Size / 72.0 * 96.0;
-            this.RecastTimeTextBlock.FontStyle =
-                (Settings.Default.OverlayFont.Style & System.Drawing.FontStyle.Italic) != 0 ?
-                FontStyles.Italic :
-                FontStyles.Normal;
-            this.RecastTimeTextBlock.FontWeight =
-                (Settings.Default.OverlayFont.Style & System.Drawing.FontStyle.Bold) != 0 ?
-                FontWeights.Bold :
-                FontWeights.Normal;
-            this.RecastTimeTextBlock.Foreground = new SolidColorBrush(Color.FromRgb(
-                Settings.Default.OverlayFontColor.R,
-                Settings.Default.OverlayFontColor.G,
-                Settings.Default.OverlayFontColor.B));
-            this.RecastTimeTextBlock.Text = recastTime;
-
-            // プログレスバーを描画する
-            var progressBarColor = Color.FromRgb(
-                Settings.Default.OverlayColor.R,
-                Settings.Default.OverlayColor.G,
-                Settings.Default.OverlayColor.B);
-            var backColor = Color.FromRgb(
-                (byte)(progressBarColor.R * 0.4),
-                (byte)(progressBarColor.G * 0.4),
-                (byte)(progressBarColor.B * 0.4));
-
-            var foreRect = new Rectangle();
-            var foreBrush = new SolidColorBrush(progressBarColor);
-            foreRect.Stroke = foreBrush;
-            foreRect.Fill = foreBrush;
-            foreRect.Width = (double)(Settings.Default.ProgressBarWidth * rateOfMPRecovery);
-            foreRect.Height = Settings.Default.ProgressBarHeight;
-            foreRect.RadiusX = 4.0d;
-            foreRect.RadiusY = 4.0d;
-            Canvas.SetLeft(foreRect, 0);
-            Canvas.SetTop(foreRect, 0);
-
-            var backRect = new Rectangle();
-            var backBrush = new SolidColorBrush(backColor);
-            backRect.Stroke = backBrush;
-            backRect.Fill = backBrush;
-            backRect.Width = Settings.Default.ProgressBarWidth;
-            backRect.Height = Settings.Default.ProgressBarHeight;
-            backRect.RadiusX = 4.0d;
-            backRect.RadiusY = 4.0d;
-            Canvas.SetLeft(backRect, 0);
-            Canvas.SetTop(backRect, 0);
-
-            this.ProgressBarCanvas.Children.Clear();
-            this.ProgressBarCanvas.Children.Add(backRect);
-            this.ProgressBarCanvas.Children.Add(foreRect);
-
-            // プログレスバーキャンパスのレイアウトを調整する
-            this.ProgressBarCanvas.Width = Settings.Default.ProgressBarWidth;
-            this.ProgressBarCanvas.Height = Settings.Default.ProgressBarHeight;
-            this.ProgressBarCanvas.Margin = new Thickness(0, 0, 0, 0);
-
-            // 秒数ラベルのレイアウトを調整する
-            this.RecastTimeTextBlock.Margin = new Thickness(
-                0,
-                Settings.Default.ProgressBarHeight,
-                0,
-                0);
-
-            // Windowサイズを調整する
-            this.Dispatcher.BeginInvoke(new Action(() =>
+            Dispatcher.BeginInvoke(new Action(() =>
             {
-                this.Width = Settings.Default.ProgressBarWidth;
-                this.Height = Settings.Default.ProgressBarHeight + this.RecastTimeTextBlock.ActualHeight;
-            }),
-            DispatcherPriority.Loaded);
+                // 秒数を描画する
+                this.RecastTimeTextBlock.FontFamily = Settings.Default.Font.ToFontFamilyWPF();
+                this.RecastTimeTextBlock.FontSize = Settings.Default.Font.ToFontSizeWPF();
+                this.RecastTimeTextBlock.FontStyle = Settings.Default.Font.ToFontStyleWPF();
+                this.RecastTimeTextBlock.FontWeight = Settings.Default.Font.ToFontWeightWPF();
+                this.RecastTimeTextBlock.Fill = new SolidColorBrush(Settings.Default.FontColor.ToWPF());
+                this.RecastTimeTextBlock.Stroke = new SolidColorBrush(Settings.Default.FontOutlineColor.ToWPF());
+                this.RecastTimeTextBlock.StrokeThickness = 0.2d;
+                this.RecastTimeTextBlock.Text = recastTime;
+
+                // プログレスバーを描画する
+                var progressBarColor = Settings.Default.ProgressBarColor.ToWPF();
+                var backColor = Settings.Default.ProgressBarColor.ToWPF().ChangeBrightness(0.4d);
+
+                var foreRect = new Rectangle();
+                var foreBrush = new SolidColorBrush(progressBarColor);
+                foreRect.Stroke = foreBrush;
+                foreRect.Fill = foreBrush;
+                foreRect.Width = (double)(Settings.Default.ProgressBarSize.Width * rateOfMPRecovery);
+                foreRect.Height = Settings.Default.ProgressBarSize.Height;
+                foreRect.RadiusX = 4.0d;
+                foreRect.RadiusY = 4.0d;
+                Canvas.SetLeft(foreRect, 0);
+                Canvas.SetTop(foreRect, 0);
+
+                var backRect = new Rectangle();
+                var backBrush = new SolidColorBrush(backColor);
+                backRect.Stroke = backBrush;
+                backRect.Fill = backBrush;
+                backRect.Width = Settings.Default.ProgressBarSize.Width;
+                backRect.Height = Settings.Default.ProgressBarSize.Height;
+                backRect.RadiusX = 4.0d;
+                backRect.RadiusY = 4.0d;
+                Canvas.SetLeft(backRect, 0);
+                Canvas.SetTop(backRect, 0);
+
+                var outlineRect = new Rectangle();
+                var outlineBrush = new SolidColorBrush(Settings.Default.ProgressBarOutlineColor.ToWPF());
+                outlineRect.Stroke = outlineBrush;
+                outlineRect.Fill = Brushes.Transparent;
+                outlineRect.Width = Settings.Default.ProgressBarSize.Width;
+                outlineRect.Height = Settings.Default.ProgressBarSize.Height;
+                outlineRect.RadiusX = 4.0d;
+                outlineRect.RadiusY = 4.0d;
+                Canvas.SetLeft(outlineRect, 0);
+                Canvas.SetTop(outlineRect, 0);
+
+                this.ProgressBarCanvas.Children.Clear();
+                this.ProgressBarCanvas.Children.Add(backRect);
+                this.ProgressBarCanvas.Children.Add(foreRect);
+                this.ProgressBarCanvas.Children.Add(outlineRect);
+
+                // プログレスバーキャンパスのレイアウトを調整する
+                this.ProgressBarCanvas.Width = Settings.Default.ProgressBarSize.Width;
+                this.ProgressBarCanvas.Height = Settings.Default.ProgressBarSize.Height;
+            }));
         }
     }
 }

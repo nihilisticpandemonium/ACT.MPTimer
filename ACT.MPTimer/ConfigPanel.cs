@@ -37,13 +37,7 @@
 
             this.LoadSettings();
 
-            this.OverlayWidthNumericUpDown.ValueChanged += (s1, e1) => this.SaveSettings();
-            this.OverlayHeightNumericUpDown.ValueChanged += (s1, e1) => this.SaveSettings();
-            this.TokaRitsuNumericUpDown.ValueChanged += (s1, e1) => this.SaveSettings();
-            this.CountInCombatCheckBox.CheckedChanged += (s1, e1) => this.SaveSettings();
-            this.CountInCombatNumericUpDown.ValueChanged += (s1, e1) => this.SaveSettings();
-            this.TargetJobComboBox.SelectedValueChanged += (s1, e1) => this.SaveSettings();
-            this.ClickThroughCheckBox.CheckedChanged += (s1, e1) =>
+            this.TekiyoButton.Click += (s1, e1) =>
             {
                 Settings.Default.OverlayTop = (int)this.MPTimerWindow.Top;
                 Settings.Default.OverlayLeft = (int)this.MPTimerWindow.Left;
@@ -67,52 +61,15 @@
                 this.MPTimerWindow.Left = Settings.Default.OverlayLeft;
 
                 this.LoadSettings();
+
+                this.MPTimerWindow.Close();
+                this.MPTimerWindow = new MPTimerWindow();
+                this.MPTimerWindow.Show();
+                if (Settings.Default.ClickThrough)
+                {
+                    this.MPTimerWindow.ToTransparentWindow();
+                }
             };
-        }
-
-        /// <summary>
-        /// 背景色ボタン Click
-        /// </summary>
-        /// <param name="sender">イベント発生元</param>
-        /// <param name="e">イベント引数</param>
-        private void BackColorButton_Click(object sender, EventArgs e)
-        {
-            this.ColorDialog.Color = this.DummyOverlayLabel.BackColor;
-            if (this.ColorDialog.ShowDialog(this) != DialogResult.Cancel)
-            {
-                this.DummyOverlayLabel.BackColor = this.ColorDialog.Color;
-                this.SaveSettings();
-            }
-        }
-
-        /// <summary>
-        /// フォントボタン Click
-        /// </summary>
-        /// <param name="sender">イベント発生元</param>
-        /// <param name="e">イベント引数</param>
-        private void FontButton_Click(object sender, EventArgs e)
-        {
-            this.FontDialog.Font = this.DummyOverlayLabel.Font;
-            if (this.FontDialog.ShowDialog(this) != DialogResult.Cancel)
-            {
-                this.DummyOverlayLabel.Font = this.FontDialog.Font;
-                this.SaveSettings();
-            }
-        }
-
-        /// <summary>
-        /// フォント色ボタン Click
-        /// </summary>
-        /// <param name="sender">イベント発生元</param>
-        /// <param name="e">イベント引数</param>
-        private void FontColorButton_Click(object sender, EventArgs e)
-        {
-            this.ColorDialog.Color = this.DummyOverlayLabel.ForeColor;
-            if (this.ColorDialog.ShowDialog(this) != DialogResult.Cancel)
-            {
-                this.DummyOverlayLabel.ForeColor = this.ColorDialog.Color;
-                this.SaveSettings();
-            }
         }
 
         /// <summary>
@@ -120,12 +77,13 @@
         /// </summary>
         private void LoadSettings()
         {
-            this.OverlayWidthNumericUpDown.Value = Settings.Default.ProgressBarWidth;
-            this.OverlayHeightNumericUpDown.Value = Settings.Default.ProgressBarHeight;
-
-            this.DummyOverlayLabel.BackColor = Settings.Default.OverlayColor;
-            this.DummyOverlayLabel.ForeColor = Settings.Default.OverlayFontColor;
-            this.DummyOverlayLabel.Font = Settings.Default.OverlayFont;
+            this.VisualSetting.BarColor = Settings.Default.ProgressBarColor;
+            this.VisualSetting.BarOutlineColor = Settings.Default.ProgressBarOutlineColor;
+            this.VisualSetting.TextFont = Settings.Default.Font;
+            this.VisualSetting.FontColor = Settings.Default.FontColor;
+            this.VisualSetting.FontOutlineColor = Settings.Default.FontOutlineColor;
+            this.VisualSetting.BarSize = Settings.Default.ProgressBarSize;
+            this.VisualSetting.RefreshSampleImage();
 
             this.TokaRitsuNumericUpDown.Value = Settings.Default.OverlayOpacity;
 
@@ -140,12 +98,12 @@
         /// </summary>
         private void SaveSettings()
         {
-            Settings.Default.ProgressBarWidth = (int)this.OverlayWidthNumericUpDown.Value;
-            Settings.Default.ProgressBarHeight = (int)this.OverlayHeightNumericUpDown.Value;
-
-            Settings.Default.OverlayColor = this.DummyOverlayLabel.BackColor;
-            Settings.Default.OverlayFontColor = this.DummyOverlayLabel.ForeColor;
-            Settings.Default.OverlayFont = this.DummyOverlayLabel.Font;
+            Settings.Default.ProgressBarColor = this.VisualSetting.BarColor;
+            Settings.Default.ProgressBarOutlineColor = this.VisualSetting.BarOutlineColor;
+            Settings.Default.Font = this.VisualSetting.TextFont;
+            Settings.Default.FontColor = this.VisualSetting.FontColor;
+            Settings.Default.FontOutlineColor = this.VisualSetting.FontOutlineColor;
+            Settings.Default.ProgressBarSize = this.VisualSetting.BarSize;
 
             Settings.Default.OverlayOpacity = (int)this.TokaRitsuNumericUpDown.Value;
 
