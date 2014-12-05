@@ -45,11 +45,12 @@
 
                 this.MPTimerWindow.Close();
                 this.MPTimerWindow = new MPTimerWindow();
-                this.MPTimerWindow.Show();
                 if (Settings.Default.ClickThrough)
                 {
                     this.MPTimerWindow.ToTransparentWindow();
                 }
+
+                this.MPTimerWindow.Show();
             };
 
             this.ShokikaButton.Click += (s1, e1) =>
@@ -64,11 +65,12 @@
 
                 this.MPTimerWindow.Close();
                 this.MPTimerWindow = new MPTimerWindow();
-                this.MPTimerWindow.Show();
                 if (Settings.Default.ClickThrough)
                 {
                     this.MPTimerWindow.ToTransparentWindow();
                 }
+
+                this.MPTimerWindow.Show();
             };
         }
 
