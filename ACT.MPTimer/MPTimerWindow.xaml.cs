@@ -4,7 +4,6 @@
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
-    using System.Windows.Shapes;
     using System.Windows.Threading;
 
     using ACT.MPTimer.Properties;
@@ -30,6 +29,21 @@
         /// 停止中か？
         /// </summary>
         private bool IsStopping;
+
+        /// <summary>フォントのBrush</summary>
+        private SolidColorBrush FontBrush { get; set; }
+
+        /// <summary>フォントのアウトラインBrush</summary>
+        private SolidColorBrush FontOutlineBrush { get; set; }
+
+        /// <summary>バーのBrush</summary>
+        private SolidColorBrush BarBrush { get; set; }
+
+        /// <summary>バーの背景のBrush</summary>
+        private SolidColorBrush BarBackBrush { get; set; }
+
+        /// <summary>バーのアウトラインのBrush</summary>
+        private SolidColorBrush BarOutlineBrush { get; set; }
 
         /// <summary>
         /// コンストラクタ
@@ -58,6 +72,19 @@
             // リリースではロード時は一先ず消しておく
             this.Opacity = 0;
 #endif
+
+            // Brushを生成する
+            this.FontBrush = new SolidColorBrush(Settings.Default.FontColor.ToWPF());
+            this.FontOutlineBrush = new SolidColorBrush(Settings.Default.FontOutlineColor.ToWPF());
+            this.BarBrush = new SolidColorBrush(Settings.Default.ProgressBarColor.ToWPF());
+            this.BarBackBrush = new SolidColorBrush(Settings.Default.ProgressBarColor.ToWPF().ChangeBrightness(0.4d));
+            this.BarOutlineBrush = new SolidColorBrush(Settings.Default.ProgressBarOutlineColor.ToWPF());
+
+            this.FontBrush.Freeze();
+            this.FontOutlineBrush.Freeze();
+            this.BarBrush.Freeze();
+            this.BarBackBrush.Freeze();
+            this.BarOutlineBrush.Freeze();
 
             // マウスの移動を定義する
             this.MouseLeftButtonDown += (s1, e1) =>
@@ -206,19 +233,15 @@
                 this.RecastTimeTextBlock.FontSize = Settings.Default.Font.ToFontSizeWPF();
                 this.RecastTimeTextBlock.FontStyle = Settings.Default.Font.ToFontStyleWPF();
                 this.RecastTimeTextBlock.FontWeight = Settings.Default.Font.ToFontWeightWPF();
-                this.RecastTimeTextBlock.Fill = new SolidColorBrush(Settings.Default.FontColor.ToWPF());
-                this.RecastTimeTextBlock.Stroke = new SolidColorBrush(Settings.Default.FontOutlineColor.ToWPF());
+                this.RecastTimeTextBlock.Fill = this.FontBrush;
+                this.RecastTimeTextBlock.Stroke = this.FontOutlineBrush;
                 this.RecastTimeTextBlock.StrokeThickness = 0.2d;
                 this.RecastTimeTextBlock.Text = recastTime;
 
                 // プログレスバーを描画する
-                var progressBarColor = Settings.Default.ProgressBarColor.ToWPF();
-                var backColor = Settings.Default.ProgressBarColor.ToWPF().ChangeBrightness(0.4d);
-
-                var foreRect = new Rectangle();
-                var foreBrush = new SolidColorBrush(progressBarColor);
-                foreRect.Stroke = foreBrush;
-                foreRect.Fill = foreBrush;
+                var foreRect = this.BarRectangle;
+                foreRect.Stroke = this.BarBrush;
+                foreRect.Fill = this.BarBrush;
                 foreRect.Width = (double)(Settings.Default.ProgressBarSize.Width * rateOfMPRecovery);
                 foreRect.Height = Settings.Default.ProgressBarSize.Height;
                 foreRect.RadiusX = 4.0d;
@@ -226,10 +249,9 @@
                 Canvas.SetLeft(foreRect, 0);
                 Canvas.SetTop(foreRect, 0);
 
-                var backRect = new Rectangle();
-                var backBrush = new SolidColorBrush(backColor);
-                backRect.Stroke = backBrush;
-                backRect.Fill = backBrush;
+                var backRect = this.BarBackRectangle;
+                backRect.Stroke = this.BarBackBrush;
+                backRect.Fill = this.BarBackBrush;
                 backRect.Width = Settings.Default.ProgressBarSize.Width;
                 backRect.Height = Settings.Default.ProgressBarSize.Height;
                 backRect.RadiusX = 4.0d;
@@ -237,9 +259,8 @@
                 Canvas.SetLeft(backRect, 0);
                 Canvas.SetTop(backRect, 0);
 
-                var outlineRect = new Rectangle();
-                var outlineBrush = new SolidColorBrush(Settings.Default.ProgressBarOutlineColor.ToWPF());
-                outlineRect.Stroke = outlineBrush;
+                var outlineRect = this.BarOutlineRectangle;
+                outlineRect.Stroke = this.BarOutlineBrush;
                 outlineRect.Fill = Brushes.Transparent;
                 outlineRect.Width = Settings.Default.ProgressBarSize.Width;
                 outlineRect.Height = Settings.Default.ProgressBarSize.Height;
@@ -247,11 +268,6 @@
                 outlineRect.RadiusY = 4.0d;
                 Canvas.SetLeft(outlineRect, 0);
                 Canvas.SetTop(outlineRect, 0);
-
-                this.ProgressBarCanvas.Children.Clear();
-                this.ProgressBarCanvas.Children.Add(backRect);
-                this.ProgressBarCanvas.Children.Add(foreRect);
-                this.ProgressBarCanvas.Children.Add(outlineRect);
 
                 // プログレスバーキャンパスのレイアウトを調整する
                 this.ProgressBarCanvas.Width = Settings.Default.ProgressBarSize.Width;

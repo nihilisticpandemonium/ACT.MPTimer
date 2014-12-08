@@ -20,7 +20,12 @@
             Grid.Row="0" Grid.Column="0"
             x:Name="ProgressBarCanvas"
             Margin="0,0,0,0" 
-            VerticalAlignment="Top"/>
+            VerticalAlignment="Top"
+            >
+            <Rectangle x:Name="BarBackRectangle" />
+            <Rectangle x:Name="BarRectangle" />
+            <Rectangle x:Name="BarOutlineRectangle" />
+        </Canvas>
 
         <Utility:OutlineTextBlock
             Grid.Column="0" Grid.Row="1"
