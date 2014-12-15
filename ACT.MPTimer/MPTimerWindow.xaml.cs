@@ -226,6 +226,9 @@
             // 透過率を設定する
             this.Opacity = (100d - Settings.Default.OverlayOpacity) / 100d;
 
+            this.Topmost = false;
+            this.Topmost = true;
+
             Dispatcher.BeginInvoke(new Action(() =>
             {
                 // 秒数を描画する
