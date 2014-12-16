@@ -51,7 +51,7 @@
             }
 
             var player = FF14PluginHelper.GetPlayer();
-            if (player != null)
+            if (player == null)
             {
                 return;
             }
