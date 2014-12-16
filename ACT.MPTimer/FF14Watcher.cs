@@ -62,6 +62,9 @@
 
                     // 監視を開始する
                     instance.watchTimer.Start();
+
+                    // ログの読み取りをセットする
+                    ActGlobals.oFormActMain.OnLogLineRead += instance.oFormActMain_OnLogLineRead;
                 }
             }
         }
@@ -75,6 +78,8 @@
             {
                 if (instance != null)
                 {
+                    ActGlobals.oFormActMain.OnLogLineRead -= instance.oFormActMain_OnLogLineRead;
+
                     if (instance.watchTimer != null)
                     {
                         instance.watchTimer.Stop();

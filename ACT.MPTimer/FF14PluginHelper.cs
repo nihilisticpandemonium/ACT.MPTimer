@@ -144,6 +144,51 @@
             return result;
         }
 
+        public static Player GetPlayerData()
+        {
+            Initialize();
+
+            var result = new Player();
+
+            if (plugin == null)
+            {
+                return result;
+            }
+
+            if (GetFFXIVProcess == null)
+            {
+                return result;
+            }
+
+            if (pluginScancombat == null)
+            {
+                return result;
+            }
+
+            dynamic playerData = pluginScancombat.GetPlayerData();
+            if (playerData != null)
+            {
+                result.JobID = playerData.JobID;
+                result.Str = playerData.Str;
+                result.Dex = playerData.Dex;
+                result.Vit = playerData.Vit;
+                result.Intel = playerData.Intel;
+                result.Mnd = playerData.Mnd;
+                result.Pie = playerData.Pie;
+                result.Attack = playerData.Attack;
+                result.Accuracy = playerData.Accuracy;
+                result.Crit = playerData.Crit;
+                result.AttackMagicPotency = playerData.AttackMagicPotency;
+                result.HealMagicPotency = playerData.HealMagicPotency;
+                result.Det = playerData.Det;
+                result.SkillSpeed = playerData.SkillSpeed;
+                result.SpellSpeed = playerData.SpellSpeed;
+                result.WeaponDmg = playerData.WeaponDmg;
+            }
+
+            return result;
+        }
+
         public static List<uint> GetCurrentPartyList(
             out int partyCount)
         {
@@ -188,5 +233,24 @@
         public int CurrentMP;
         public int MaxMP;
         public int CurrentTP;
+    }
+    public class Player
+    {
+        public int JobID;
+        public int Str;
+        public int Dex;
+        public int Vit;
+        public int Intel;
+        public int Mnd;
+        public int Pie;
+        public int Attack;
+        public int Accuracy;
+        public int Crit;
+        public int AttackMagicPotency;
+        public int HealMagicPotency;
+        public int Det;
+        public int SkillSpeed;
+        public int SpellSpeed;
+        public int WeaponDmg;
     }
 }

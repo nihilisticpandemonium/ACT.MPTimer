@@ -1,6 +1,7 @@
 ﻿namespace ACT.MPTimer
 {
     using System;
+    using System.Collections.Generic;
 
     using ACT.MPTimer.Properties;
 
@@ -50,11 +51,17 @@
         private int PreviousMP { get; set; }
 
         /// <summary>
+        /// 状態別のMP回復値の辞書
+        /// </summary>
+        private Dictionary<string, int> MPRecoveryValueDictionary = new Dictionary<string, int>();
+
+        /// <summary>
         /// MP回復スパンを監視する
         /// </summary>
         public void WacthMPRecovery()
         {
-            var player = this.GetPlayer();
+            FF14PluginHelper.RefreshPlayer();
+            var player = FF14PluginHelper.GetPlayer();
             if (player == null)
             {
                 this.ExistPlayer = false;
@@ -62,6 +69,9 @@
             }
 
             this.ExistPlayer = true;
+
+            // プレイヤーのステータスを取得する
+            var playerStatus = FF14PluginHelper.GetPlayerData();
 
             // ジョブ指定？
             if (Settings.Default.TargetJobId != 0)
@@ -105,8 +115,39 @@
             // MPが回復している？
             if (player.CurrentMP > this.PreviousMP)
             {
-                this.LastRecoveryDateTime = now;
-                this.NextRecoveryDateTime = this.LastRecoveryDateTime.AddSeconds(3d);
+                // 現在のプレイヤー状態を辞書向けのキーに変換する
+                var key = playerStatus.Pie.ToString() + "-" + this.CurrentMPRecoveryStatus.ToString();
+
+                // 今回で満タンではない？
+                if (this.PreviousMP > -1 &&
+                    player.CurrentMP < player.MaxMP)
+                {
+                    // 回復量を算出する
+                    var mpRecoveryValue = player.CurrentMP - this.PreviousMP;
+
+                    // バラード中ではなくアストラルファイア中でもない？
+                    if (!this.BalladEnabled &&
+                        this.CurrentMPRecoveryStatus != MPRecoveryStatus.AstralFire)
+                    {
+                        // 現在の状態の回復量を記録する
+                        this.MPRecoveryValueDictionary[key] = mpRecoveryValue;
+                    }
+
+                    // 今の状態の回復量の辞書がある？
+                    if (this.MPRecoveryValueDictionary.ContainsKey(key))
+                    {
+                        // アストラファイア中ではない？
+                        if (this.CurrentMPRecoveryStatus != MPRecoveryStatus.AstralFire)
+                        {
+                            // 記録された回復量を今回の回復量が一致する？
+                            if (mpRecoveryValue == this.MPRecoveryValueDictionary[key])
+                            {
+                                this.LastRecoveryDateTime = now;
+                                this.NextRecoveryDateTime = this.LastRecoveryDateTime.AddSeconds(3d);
+                            }
+                        }
+                    }
+                }
             }
 
             // 回復までの残り時間を算出する
