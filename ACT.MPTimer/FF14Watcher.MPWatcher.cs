@@ -70,9 +70,6 @@
 
             this.ExistPlayer = true;
 
-            // プレイヤーのステータスを取得する
-            var playerStatus = FF14PluginHelper.GetPlayerData();
-
             // ジョブ指定？
             if (Settings.Default.TargetJobId != 0)
             {
@@ -109,6 +106,9 @@
                     this.InCombat = true;
                 }
             }
+
+            // プレイヤーのステータスを取得する
+            var playerStatus = FF14PluginHelper.GetPlayerData();
 
             var now = DateTime.Now;
 
