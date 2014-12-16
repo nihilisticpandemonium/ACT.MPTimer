@@ -139,7 +139,7 @@
                         // アストラファイア中ではない？
                         if (this.CurrentMPRecoveryStatus != MPRecoveryStatus.AstralFire)
                         {
-                            // 記録された回復量を今回の回復量が一致する？
+                            // 記録された回復量と今回の回復量が一致する？
                             if (mpRecoveryValue == this.MPRecoveryValueDictionary[key])
                             {
                                 this.LastRecoveryDateTime = now;
