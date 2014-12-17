@@ -99,100 +99,94 @@
         {
             Initialize();
 
-            lock (lockObject)
+            var result = new List<Combatant>();
+
+            if (plugin == null)
             {
-                var result = new List<Combatant>();
-
-                if (plugin == null)
-                {
-                    return result;
-                }
-
-                if (GetFFXIVProcess == null)
-                {
-                    return result;
-                }
-
-                if (pluginScancombat == null)
-                {
-                    return result;
-                }
-
-                dynamic list = pluginScancombat.GetCombatantList();
-                foreach (dynamic item in list.ToArray())
-                {
-                    if (item == null)
-                    {
-                        continue;
-                    }
-
-                    var combatant = new Combatant();
-
-                    combatant.ID = (uint)item.ID;
-                    combatant.OwnerID = (uint)item.OwnerID;
-                    combatant.Job = (int)item.Job;
-                    combatant.Name = (string)item.Name;
-                    combatant.type = (byte)item.type;
-                    combatant.Level = (int)item.Level;
-                    combatant.CurrentHP = (int)item.CurrentHP;
-                    combatant.MaxHP = (int)item.MaxHP;
-                    combatant.CurrentMP = (int)item.CurrentMP;
-                    combatant.MaxMP = (int)item.MaxMP;
-                    combatant.CurrentTP = (int)item.CurrentTP;
-
-                    result.Add(combatant);
-                }
-
                 return result;
             }
+
+            if (GetFFXIVProcess == null)
+            {
+                return result;
+            }
+
+            if (pluginScancombat == null)
+            {
+                return result;
+            }
+
+            dynamic list = pluginScancombat.GetCombatantList();
+            foreach (dynamic item in list.ToArray())
+            {
+                if (item == null)
+                {
+                    continue;
+                }
+
+                var combatant = new Combatant();
+
+                combatant.ID = (uint)item.ID;
+                combatant.OwnerID = (uint)item.OwnerID;
+                combatant.Job = (int)item.Job;
+                combatant.Name = (string)item.Name;
+                combatant.type = (byte)item.type;
+                combatant.Level = (int)item.Level;
+                combatant.CurrentHP = (int)item.CurrentHP;
+                combatant.MaxHP = (int)item.MaxHP;
+                combatant.CurrentMP = (int)item.CurrentMP;
+                combatant.MaxMP = (int)item.MaxMP;
+                combatant.CurrentTP = (int)item.CurrentTP;
+
+                result.Add(combatant);
+            }
+
+            return result;
         }
 
         public static Player GetPlayerData()
         {
             Initialize();
 
-            lock (lockObject)
+            var result = new Player();
+
+            if (plugin == null)
             {
-                var result = new Player();
-
-                if (plugin == null)
-                {
-                    return result;
-                }
-
-                if (GetFFXIVProcess == null)
-                {
-                    return result;
-                }
-
-                if (pluginScancombat == null)
-                {
-                    return result;
-                }
-
-                dynamic playerData = pluginScancombat.GetPlayerData();
-                if (playerData != null)
-                {
-                    result.JobID = playerData.JobID;
-                    result.Str = playerData.Str;
-                    result.Dex = playerData.Dex;
-                    result.Vit = playerData.Vit;
-                    result.Intel = playerData.Intel;
-                    result.Mnd = playerData.Mnd;
-                    result.Pie = playerData.Pie;
-                    result.Attack = playerData.Attack;
-                    result.Accuracy = playerData.Accuracy;
-                    result.Crit = playerData.Crit;
-                    result.AttackMagicPotency = playerData.AttackMagicPotency;
-                    result.HealMagicPotency = playerData.HealMagicPotency;
-                    result.Det = playerData.Det;
-                    result.SkillSpeed = playerData.SkillSpeed;
-                    result.SpellSpeed = playerData.SpellSpeed;
-                    result.WeaponDmg = playerData.WeaponDmg;
-                }
-
                 return result;
             }
+
+            if (GetFFXIVProcess == null)
+            {
+                return result;
+            }
+
+            if (pluginScancombat == null)
+            {
+                return result;
+            }
+
+            dynamic playerData = pluginScancombat.GetPlayerData();
+            if (playerData != null)
+            {
+                result.JobID = playerData.JobID;
+                result.Str = playerData.Str;
+                result.Dex = playerData.Dex;
+                result.Vit = playerData.Vit;
+                result.Intel = playerData.Intel;
+                result.Mnd = playerData.Mnd;
+                result.Pie = playerData.Pie;
+                result.Attack = playerData.Attack;
+                result.Accuracy = playerData.Accuracy;
+                result.Crit = playerData.Crit;
+                result.AttackMagicPotency = playerData.AttackMagicPotency;
+                result.HealMagicPotency = playerData.HealMagicPotency;
+                result.Det = playerData.Det;
+                result.SkillSpeed = playerData.SkillSpeed;
+                result.SpellSpeed = playerData.SpellSpeed;
+                result.WeaponDmg = playerData.WeaponDmg;
+            }
+
+            return result;
         }
 
         public static List<uint> GetCurrentPartyList(
@@ -200,31 +194,28 @@
         {
             Initialize();
 
-            lock (lockObject)
+            var partyList = new List<uint>();
+            partyCount = 0;
+
+            if (plugin == null)
             {
-                var partyList = new List<uint>();
-                partyCount = 0;
-
-                if (plugin == null)
-                {
-                    return partyList;
-                }
-
-                if (GetFFXIVProcess == null)
-                {
-                    return partyList;
-                }
-
-                if (pluginScancombat == null)
-                {
-                    return partyList;
-                }
-
-                partyList = pluginScancombat.GetCurrentPartyList(
-                    out partyCount) as List<uint>;
-
                 return partyList;
             }
+
+            if (GetFFXIVProcess == null)
+            {
+                return partyList;
+            }
+
+            if (pluginScancombat == null)
+            {
+                return partyList;
+            }
+
+            partyList = pluginScancombat.GetCurrentPartyList(
+                out partyCount) as List<uint>;
+
+            return partyList;
         }
     }
 
