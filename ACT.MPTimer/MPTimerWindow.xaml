@@ -6,9 +6,7 @@
     Title="MPタイマ" 
     SizeToContent="WidthAndHeight"
     AllowsTransparency="True" WindowStyle="None" Opacity="1" Background="Transparent"
-    TextOptions.TextFormattingMode="Display"
-    TextOptions.TextHintingMode="Animated"
-    TextOptions.TextRenderingMode="ClearType">
+    >
 
     <Grid x:Name="BaseGrid" >
         <Grid.RowDefinitions>
