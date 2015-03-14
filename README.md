@@ -9,7 +9,6 @@ ACT.MPTimer
 使い方
 --------------
 ACT.MPTimer.dll  
-ACT.MPTimer.dll.config  
 をACTのインストールディレクトリにコピーします  
 その後、プラグインとしてACT.MPTimer.dllを追加してください  
   
