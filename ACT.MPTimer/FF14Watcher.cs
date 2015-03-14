@@ -53,7 +53,7 @@
 
                     instance.watchTimer = new Timer()
                     {
-                        Interval = 90,
+                        Interval = 100,
                         AutoReset = false,
                         Enabled = false
                     };

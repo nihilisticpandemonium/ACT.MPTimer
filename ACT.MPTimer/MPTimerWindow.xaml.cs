@@ -168,7 +168,7 @@
                 this.DrawRecastTimer();
 
                 // 監視間隔を短くする
-                this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 0, 50);
+                this.MPWatchTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             }
             catch (Exception ex)
             {
@@ -232,14 +232,17 @@
             Dispatcher.BeginInvoke(new Action(() =>
             {
                 // 秒数を描画する
-                this.RecastTimeTextBlock.FontFamily = Settings.Default.Font.ToFontFamilyWPF();
-                this.RecastTimeTextBlock.FontSize = Settings.Default.Font.ToFontSizeWPF();
-                this.RecastTimeTextBlock.FontStyle = Settings.Default.Font.ToFontStyleWPF();
-                this.RecastTimeTextBlock.FontWeight = Settings.Default.Font.ToFontWeightWPF();
-                this.RecastTimeTextBlock.Fill = this.FontBrush;
-                this.RecastTimeTextBlock.Stroke = this.FontOutlineBrush;
-                this.RecastTimeTextBlock.StrokeThickness = 0.2d;
-                this.RecastTimeTextBlock.Text = recastTime;
+                if (this.RecastTimeTextBlock.Text != recastTime)
+                {
+                    this.RecastTimeTextBlock.FontFamily = Settings.Default.Font.ToFontFamilyWPF();
+                    this.RecastTimeTextBlock.FontSize = Settings.Default.Font.ToFontSizeWPF();
+                    this.RecastTimeTextBlock.FontStyle = Settings.Default.Font.ToFontStyleWPF();
+                    this.RecastTimeTextBlock.FontWeight = Settings.Default.Font.ToFontWeightWPF();
+                    this.RecastTimeTextBlock.Fill = this.FontBrush;
+                    this.RecastTimeTextBlock.Stroke = this.FontOutlineBrush;
+                    this.RecastTimeTextBlock.StrokeThickness = (this.RecastTimeTextBlock.FontSize / 100.0d) * 3.0d;
+                    this.RecastTimeTextBlock.Text = recastTime;
+                }
 
                 // プログレスバーを描画する
                 var foreRect = this.BarRectangle;
@@ -271,6 +274,8 @@
                 outlineRect.RadiusY = 4.0d;
                 Canvas.SetLeft(outlineRect, 0);
                 Canvas.SetTop(outlineRect, 0);
+
+                this.BarRectangleEffect.Color = this.BarBrush.Color;
 
                 // プログレスバーキャンパスのレイアウトを調整する
                 this.ProgressBarCanvas.Width = Settings.Default.ProgressBarSize.Width;

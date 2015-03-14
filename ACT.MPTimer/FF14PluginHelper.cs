@@ -127,16 +127,18 @@
                 var combatant = new Combatant();
 
                 combatant.ID = (uint)item.ID;
-                combatant.OwnerID = (uint)item.OwnerID;
                 combatant.Job = (int)item.Job;
+                combatant.CurrentMP = (int)item.CurrentMP;
+                combatant.MaxMP = (int)item.MaxMP;
+/*
+                combatant.OwnerID = (uint)item.OwnerID;
                 combatant.Name = (string)item.Name;
                 combatant.type = (byte)item.type;
                 combatant.Level = (int)item.Level;
                 combatant.CurrentHP = (int)item.CurrentHP;
                 combatant.MaxHP = (int)item.MaxHP;
-                combatant.CurrentMP = (int)item.CurrentMP;
-                combatant.MaxMP = (int)item.MaxMP;
                 combatant.CurrentTP = (int)item.CurrentTP;
+*/
 
                 result.Add(combatant);
             }
@@ -169,12 +171,13 @@
             if (playerData != null)
             {
                 result.JobID = playerData.JobID;
+                result.Pie = playerData.Pie;
+/*
                 result.Str = playerData.Str;
                 result.Dex = playerData.Dex;
                 result.Vit = playerData.Vit;
                 result.Intel = playerData.Intel;
                 result.Mnd = playerData.Mnd;
-                result.Pie = playerData.Pie;
                 result.Attack = playerData.Attack;
                 result.Accuracy = playerData.Accuracy;
                 result.Crit = playerData.Crit;
@@ -184,6 +187,7 @@
                 result.SkillSpeed = playerData.SkillSpeed;
                 result.SpellSpeed = playerData.SpellSpeed;
                 result.WeaponDmg = playerData.WeaponDmg;
+*/
             }
 
             return result;
