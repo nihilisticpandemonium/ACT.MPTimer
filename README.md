@@ -17,10 +17,10 @@ The recovery timing is synchronized when your MP decreases in the game and natur
   
 Latest release
 --------------
-** [Download here] (https://github.com/nihilisticpandemonium/ACT.MPTimer/releases/latest) **
+**[Download here] (https://github.com/nihilisticpandemonium/ACT.MPTimer/releases/latest)**
   
   
-license
+License
 --------------
 3-clause BSD license
 Copryright (c) 2014, anoyetta
@@ -29,6 +29,6 @@ https://github.com/nihilisticpandemonium/ACT.MPTimer/blob/master/LICENSE
   
 Acknowledgment
 --------------
-・ GB19xx
+GB19xx
 https://github.com/GB19xx/ACT.TPMonitor
 FF14 helper class was diverted
