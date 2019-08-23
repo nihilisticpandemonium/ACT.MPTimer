@@ -1,41 +1,34 @@
 ACT.MPTimer
 ===========
 
-概要
+Overview
 -------------
-ゲーム内の3秒ごとのMP回復をプログレスバーで表示します
-  
-  
-使い方
+Shows progress in-game MP recovery every 3 seconds with progress bar
+  
+  
+How to use
 --------------
-ACT.MPTimer.dll  
-をACTのインストールディレクトリにコピーします  
-その後、プラグインとしてACT.MPTimer.dllを追加してください  
-  
-ゲーム内で自分のMPが減って自然回復すると回復タイミングが同期されます  
-  
-  
-最新リリース
+ACT.MPTimer.dll
+To the ACT installation directory
+Then add ACT.MPTimer.dll as a plug-in
+  
+The recovery timing is synchronized when your MP decreases in the game and naturally recovers.
+  
+  
+Latest release
 --------------
-**[こちらからダウンロードしてください](https://github.com/anoyetta/ACT.MPTimer/releases/latest)**  
-  
-  
-ライセンス
+** [Download here] (https://github.com/nihilisticpandemonium/ACT.MPTimer/releases/latest) **
+  
+  
+license
 --------------
-三条項BSDライセンス  
-Copryright (c) 2014, anoyetta  
-https://github.com/anoyetta/ACT.MPTimer/blob/master/LICENSE  
-  
-  
-謝辞
+3-clause BSD license
+Copryright (c) 2014, anoyetta
+https://github.com/nihilisticpandemonium/ACT.MPTimer/blob/master/LICENSE
+  
+  
+Acknowledgment
 --------------
-・GB19xx様  
-https://github.com/GB19xx/ACT.TPMonitor  
-のFF14ヘルパークラスを流用させていただきました  
-  
-  
-お問合せ
---------------
-不具合報告、要望、質問及び最新版情報などはTwitterにて  
-GitHubと連動しているためツイートは少々五月蠅いかもしれません  
-https://twitter.com/anoyetta  
+・ GB19xx
+https://github.com/GB19xx/ACT.TPMonitor
+FF14 helper class was diverted
