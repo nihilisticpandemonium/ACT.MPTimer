@@ -5,6 +5,8 @@
 *.suo
 *.user
 *.sln.docstates
+.vs/
+.ionide/
 
 # Build results
 [Dd]ebug/
