@@ -8,9 +8,6 @@
     <Setting Name="ProgressBarColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">OrangeRed</Value>
     </Setting>
-    <Setting Name="Font" Type="System.Drawing.Font" Scope="User">
-      <Value Profile="(Default)">メイリオ, 9.75pt</Value>
-    </Setting>
     <Setting Name="OverlayLeft" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
@@ -43,6 +40,9 @@
     </Setting>
     <Setting Name="ProgressBarSize" Type="System.Drawing.Size" Scope="User">
       <Value Profile="(Default)">110, 7</Value>
+    </Setting>
+    <Setting Name="Font" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Microsoft Sans Serif, 9.75pt</Value>
     </Setting>
   </Settings>
 </SettingsFile>
